@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Search (props) {
+export default function Form (props) {
     return (
         <React.Fragment>
             <nav className="navbar navbar-light bg-light p-2">
@@ -8,11 +8,11 @@ export default function Search (props) {
                     <button className="btn btn-light"
                         onClick={() => { props.setActive("browse") }}>Logo</button>
                     <button className="btn btn-primary"
-                        onClick={() => { props.setActive("form") }}>Share</button>
+                        onClick={() => { props.setActive("browse") }}>Cancel</button>
                 </div>
             </nav>
-            
-            <h1>Search Results</h1>
+
+            <h1>Share your Home Decorating Idea</h1>
         </React.Fragment>
     )
 }
