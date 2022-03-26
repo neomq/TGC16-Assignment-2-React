@@ -1,18 +1,40 @@
 import React from 'react'
-import './App.css';
-// import axios from "axios"
+import './App.css'
+import axios from "axios"
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap.bundle.js"
 import Browse from './components/Browse.js'
 import Search from './components/Search.js'
 import Form from './components/Form.js'
 
+const BASE_URL = "https://home-diy-ideas.herokuapp.com";
 
 export default class App extends React.Component {
 
   state = {
-    "data": [],
-    "active": "browse"
+    // database
+    data: [],
+
+    // page
+    active: "browse",
+
+    // search
+    search_word: "",
+
+    // submit search form
+    submit: false
+  }
+
+  fetchData = async () => {
+    let response = await axios.get(BASE_URL + "/projects");
+    console.log(response.data)
+    this.setState({
+      data: response.data
+    });
+  };
+
+  componentDidMount() {
+    this.fetchData();
   }
 
   updateFormField = (e) => {
@@ -23,7 +45,14 @@ export default class App extends React.Component {
 
   setActive = (page) => {
     this.setState({
-      "active": page
+      active: page
+    })
+  }
+
+  submitForm = () => {
+    this.setState({
+      submit: true,
+      active: "search"
     })
   }
 
@@ -31,7 +60,11 @@ export default class App extends React.Component {
     if (this.state.active === "browse") {
       return (
         <React.Fragment>
-          <Browse setActive={this.setActive}/>
+          <Browse setActive={this.setActive}
+                  search_word={this.state.search_word}
+                  updateFormField={this.updateFormField}
+                  submitForm={this.submitForm}
+                  data={this.state.data}/>
         </React.Fragment>
       );
     } else if (this.state.active === "search") {
@@ -53,16 +86,6 @@ export default class App extends React.Component {
   render() {
     return(
       <React.Fragment>
-
-        {/* <nav className="navbar navbar-light bg-light p-2">
-          <div className="container-fluid p-2">
-          <button className="btn btn-light"
-                  onClick={ ()=>{this.setActive("browse")} }>Logo</button>
-            <button className="btn btn-primary"
-                    onClick={ ()=>{this.setActive("form")} }>Share</button>
-          </div>
-        </nav> */}
-
         {this.renderContent()}
       </React.Fragment>
     );
