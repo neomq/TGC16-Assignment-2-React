@@ -30,24 +30,27 @@ export default function Browse (props) {
             </div>
 
             <div className="px-3 mt-3">
-                <h3>Browse</h3>
+                <h4>Browse Latest Ideas & Inspirations</h4>
             </div>
-            {props.data.map((eachItem) => (
-            <div className="card-group px-3 py-2"
-                  key={eachItem._id}>
-                  <div className="card">
-                    <img src={eachItem.photo} className="card-img-top" alt="..."/>
-                    <div className="card-body">
-                      <h3 className="card-title">{eachItem.project_title}</h3>
-                      <p className="card-text">{eachItem.date_of_post}</p>
-                      <p>{eachItem.description}</p>  
+
+            <div className="card-group row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4 px-3 py-2">
+                {props.data.map((eachItem) => (
+                    <div className="col" key={eachItem._id}>
+                        <div className="card">
+                            <img src={eachItem.photo} height="320px" className="card-img-top" alt="..." />
+                            <div className="card-body">
+                                <h5 className="card-title">{eachItem.project_title}</h5>
+                                <p className="card-text text-muted">{eachItem.date_of_post}</p>
+                                <p className="mb-0">{eachItem.description}</p>
+                            </div>
+                            <div className="card-footer">
+                                <small className="text-muted">by {eachItem.user_name}</small>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-footer">
-                      <small class="text-muted">by {eachItem.user_name}</small>
-                    </div>
-                  </div>
+                ))}
             </div>
-          ))}
+
         </React.Fragment>
     )
 }
