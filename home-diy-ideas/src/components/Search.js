@@ -25,12 +25,9 @@ export default function Search (props) {
                             value={props.category}
                             onChange={props.updateFormField}>
                             <option>Select Category</option>
-                            <option value="clocks">Clocks</option>
                             <option value="mirrors">Mirrors</option>
-                            <option value="frames">Frames</option>
-                            <option value="vase">Vase</option>
-                            <option value="wall-decor">Wall Decorations</option>
-                            <option value="hang-decor">Hanging Decorations</option>
+                            <option value="wall decor">Wall Decorations</option>
+                            <option value="paintings and prints">Paintings and Prints</option>
                         </select>
                     </div>
 
@@ -41,12 +38,10 @@ export default function Search (props) {
                             value={props.craft_type}
                             onChange={props.updateFormField}>
                             <option>Select Craft Type</option>
-                            <option value="ceramic">Ceramics & glass</option>
-                            <option value="fibre">Fibre & Textile</option>
-                            <option value="flower">Flower</option>
-                            <option value="leatherwork">Leatherwork</option>
-                            <option value="houseware">Houseware</option>
-                            <option value="needlework">Needlework</option>
+                            <option value="fibre and textile">Fibre & Textile</option>
+                            <option value="rope">Rope</option>
+                            <option value="woodworking">Woodworking</option>
+                            <option value="paper craft">Paper</option>
                         </select>
                     </div>
 

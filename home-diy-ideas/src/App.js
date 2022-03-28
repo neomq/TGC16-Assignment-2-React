@@ -73,7 +73,7 @@ export default class App extends React.Component {
 
   componentDidMount() {
     this.fetchData()
-    this.getSearch()
+    // this.getSearch()
   }
 
   updateFormField = (e) => {
