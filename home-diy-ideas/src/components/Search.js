@@ -83,9 +83,9 @@ export default function Search (props) {
                 </div>
             </div>
 
-            <h1>Search Results</h1>
+            <h3>Search Results</h3>
 
-            <div className="card-group row row-cols-1 row-cols-md-3 row-cols-lg-4 g-3">
+            <div className="card-group row row-cols-1 row-cols-md-3 row-cols-lg-4 g-3 py-2">
                 {props.search_data.map((eachItem) => (
                     <div className="col" key={eachItem._id}>
                         <div className="card">

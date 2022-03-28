@@ -1,6 +1,5 @@
 import React from 'react'
 import './App.css'
-import './Browse.css'
 import axios from "axios"
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap.bundle.js"

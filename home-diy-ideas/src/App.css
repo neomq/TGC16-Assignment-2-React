@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+/* Own CSS */
+* {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.card {
+  height: 580px;
+}
