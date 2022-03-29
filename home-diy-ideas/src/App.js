@@ -30,6 +30,40 @@ export default class App extends React.Component {
     search_data: []
   }
 
+  category_list = [
+    {
+      'name_display':'Mirrors',
+      'category': 'mirrors'
+    },
+    {
+      'name_display': 'Wall Decor',
+      'category': 'wall decor'
+    },
+    {
+      'name_display': 'Paintings and Prints',
+      'category': 'paintings and prints'
+    }
+  ]
+
+  craft_type_list = [
+    {
+      'name_display':'Fibre & Textile',
+      'craft_type': 'fibre and textile'
+    },
+    {
+      'name_display': 'Rope',
+      'craft_type': 'rope'
+    },
+    {
+      'name_display': 'Woodworking',
+      'craft_type': 'woodworking'
+    },
+    {
+      'name_display': 'Paper',
+      'craft_type': 'paper craft'
+    }
+  ]
+
   fetchData = async () => {
     let response = await axios.get(BASE_URL + "/projects")
     console.log(response.data)
@@ -106,6 +140,8 @@ export default class App extends React.Component {
                   difficulty={this.state.difficulty}
                   getSearch={this.getSearch}
                   updateFormField={this.updateFormField}
+                  category_list={this.category_list}
+                  craft_type_list={this.craft_type_list}
                   search_data={this.state.search_data}/>
         </React.Fragment>
       );

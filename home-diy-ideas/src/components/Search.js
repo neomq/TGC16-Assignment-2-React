@@ -25,9 +25,12 @@ export default function Search (props) {
                             value={props.category}
                             onChange={props.updateFormField}>
                             <option>Select Category</option>
-                            <option value="mirrors">Mirrors</option>
-                            <option value="wall decor">Wall Decorations</option>
-                            <option value="paintings and prints">Paintings and Prints</option>
+                            {props.category_list.map((c) =>
+                            <option key={c.category}
+                                    value={c.category}
+                            >{c.name_display}
+                            </option>
+                            )}
                         </select>
                     </div>
 
@@ -38,10 +41,12 @@ export default function Search (props) {
                             value={props.craft_type}
                             onChange={props.updateFormField}>
                             <option>Select Craft Type</option>
-                            <option value="fibre and textile">Fibre & Textile</option>
-                            <option value="rope">Rope</option>
-                            <option value="woodworking">Woodworking</option>
-                            <option value="paper craft">Paper</option>
+                            {props.craft_type_list.map((a) =>
+                            <option key={a.craft_type}
+                                    value={a.craft_type}
+                            >{a.name_display}
+                            </option>
+                            )}
                         </select>
                     </div>
 
