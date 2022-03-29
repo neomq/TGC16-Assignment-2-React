@@ -28,7 +28,7 @@ export default function Search (props) {
                             {props.category_list.map((c) =>
                             <option key={c.category}
                                     value={c.category}
-                            >{c.name_display}
+                            >{c.form_display}
                             </option>
                             )}
                         </select>
@@ -44,7 +44,7 @@ export default function Search (props) {
                             {props.craft_type_list.map((a) =>
                             <option key={a.craft_type}
                                     value={a.craft_type}
-                            >{a.name_display}
+                            >{a.form_display}
                             </option>
                             )}
                         </select>

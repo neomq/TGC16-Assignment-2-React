@@ -27,42 +27,24 @@ export default class App extends React.Component {
     craft_type: "",
     time_required: "",
     difficulty: "",
-    search_data: []
+    search_data: [],
+
+    // search form
+    category_list: [],
+    craft_type_list: [],
+
+    // submit form
+    user_name: "",
+    project_title: "",
+    photo: "",
+    description: "",
+    category_1: "",
+    category_2: "",
+    category_3: "",
+    craft_type_1: "",
+    craft_type_2: "",
+    craft_type_3: ""
   }
-
-  category_list = [
-    {
-      'name_display':'Mirrors',
-      'category': 'mirrors'
-    },
-    {
-      'name_display': 'Wall Decor',
-      'category': 'wall decor'
-    },
-    {
-      'name_display': 'Paintings and Prints',
-      'category': 'paintings and prints'
-    }
-  ]
-
-  craft_type_list = [
-    {
-      'name_display':'Fibre & Textile',
-      'craft_type': 'fibre and textile'
-    },
-    {
-      'name_display': 'Rope',
-      'craft_type': 'rope'
-    },
-    {
-      'name_display': 'Woodworking',
-      'craft_type': 'woodworking'
-    },
-    {
-      'name_display': 'Paper',
-      'craft_type': 'paper craft'
-    }
-  ]
 
   fetchData = async () => {
     let response = await axios.get(BASE_URL + "/projects")
@@ -104,9 +86,27 @@ export default class App extends React.Component {
     })
   }
 
+  getCategories = async () => {
+    let categories = await axios.get(BASE_URL + "/category_list")
+    console.log(categories)
+    this.setState({
+      category_list: categories.data
+    })
+  }
+
+  getCraftTypes = async () => {
+    let craft_types = await axios.get(BASE_URL + "/craft_type_list")
+    console.log(craft_types)
+    this.setState({
+      craft_type_list: craft_types.data
+    })
+  }
+
   componentDidMount() {
     this.fetchData()
     // this.getSearch()
+    this.getCategories()
+    this.getCraftTypes()
   }
 
   updateFormField = (e) => {
@@ -140,15 +140,28 @@ export default class App extends React.Component {
                   difficulty={this.state.difficulty}
                   getSearch={this.getSearch}
                   updateFormField={this.updateFormField}
-                  category_list={this.category_list}
-                  craft_type_list={this.craft_type_list}
+                  category_list={this.state.category_list}
+                  craft_type_list={this.state.craft_type_list}
                   search_data={this.state.search_data}/>
         </React.Fragment>
       );
     } else if (this.state.active === "form") {
       return (
         <React.Fragment>
-          <Form setActive={this.setActive}/>
+          <Form setActive={this.setActive}
+                user_name={this.state.user_name}
+                project_title={this.state.project_title}
+                photo={this.state.photo}
+                description={this.state.description}
+                category_1={this.state.category_1}
+                category_2={this.state.category_2}
+                category_3={this.state.category_3}
+                category_list={this.state.category_list}
+                craft_type_1={this.state.craft_type_1}
+                craft_type_2={this.state.craft_type_2}
+                craft_type_3={this.state.craft_type_3}
+                craft_type_list={this.state.craft_type_list}
+                updateFormField={this.updateFormField}/>
         </React.Fragment>
       );
     }
