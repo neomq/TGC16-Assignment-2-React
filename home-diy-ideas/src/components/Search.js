@@ -65,11 +65,9 @@ export default function Search (props) {
                             value={props.difficulty}
                             onChange={props.updateFormField}>
                             <option>Select Difficulty</option>
-                            <option value="beginner">Beginner</option>
                             <option value="easy">Easy</option>
                             <option value="normal">Normal</option>
                             <option value="hard">Hard</option>
-                            <option value="challenging">Challenging</option>
                         </select>
                     </div>
                 </div>

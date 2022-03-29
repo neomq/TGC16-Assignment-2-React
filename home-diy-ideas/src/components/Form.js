@@ -5,7 +5,7 @@ export default function Form (props) {
         <React.Fragment>
             <h3>Share your Home Decorating Idea</h3>
             
-            {/* Personal Info */}
+            {/* 1. Personal Info */}
             <div className="border-bottom mt-4">
                 <h5>1. Personal Info</h5>
             </div>
@@ -17,7 +17,7 @@ export default function Form (props) {
                 />
             </div>
 
-            {/* Details */}
+            {/* 2. Details */}
             <div className="border-bottom mt-4">
                 <h5>2. Details</h5>
             </div>
@@ -102,6 +102,46 @@ export default function Form (props) {
                 />
             </div>
 
+            {/* Time Required & Difficulty */}
+            <div className="d-flex mt-4">
+                <div>
+                    <h6>Time Required (in mins)</h6>
+                    <input className="form-control mt-2"
+                        name=""
+                        type="text"
+                        placeholder=""
+                    />
+                </div>
+                <div>
+                    <h6>Difficulty</h6>
+                    <div className="d-flex">
+                        <button type="button" className="btn btn-primary">Easy</button>
+                        <button type="button" className="btn btn-primary">Normal</button>
+                        <button type="button" className="btn btn-primary">Hard</button>
+                    </div>
+                </div>
+            </div>
+
+            {/* 3. Instructions */}
+            <div className="border-bottom mt-4">
+                <h5>3. Instructions</h5>
+            </div>
+            <div className="mt-4">
+                <h6>Description of steps (seperate each step by comma)</h6>
+                <textarea class="form-control mt-2" id="exampleFormControlTextarea1"
+                    name=""
+                    placeholder="e.g."
+                />
+
+                <h6 className="mt-4">Link to site (optional)</h6>
+                <input className="form-control mt-2"
+                        type="text"
+                        placeholder="Paste URL here"
+                />
+            </div>
+
+            {/* Submit */}
+            <button type="button" className="btn btn-primary mt-4">Submit</button>
         </React.Fragment>
     )
 }
