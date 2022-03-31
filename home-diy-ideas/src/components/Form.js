@@ -3,6 +3,16 @@ import React from 'react'
 export default function Form (props) {
     return (
         <React.Fragment>
+            {/* Close button */}
+            <div className="d-grid d-flex justify-content-end">
+                <button type="button"
+                        className="btn btn-outline-secondary"
+                        onClick={() => { props.setActiveForm(false) }}
+                >Cancel
+                </button>
+                
+            </div>
+
             <h3>Share your Home Decorating Idea</h3>
             
             {/* 1. Personal Info */}

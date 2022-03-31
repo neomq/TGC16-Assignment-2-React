@@ -4,6 +4,7 @@ import axios from "axios"
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap.bundle.js"
 import Browse from './components/Browse.js'
+import SearchResults from './components/SearchResults.js'
 import Search from './components/Search.js'
 import Form from './components/Form.js'
 
@@ -20,6 +21,7 @@ export default class App extends React.Component {
 
     // page
     active: "browse",
+    form: false,
 
     // search project
     search_word: "",
@@ -72,7 +74,8 @@ export default class App extends React.Component {
     })
     // console.log(search_results)
     this.setState({
-      search_data: search_results.data
+      search_data: search_results.data,
+      active: "search_results"
     })
   }
 
@@ -111,6 +114,12 @@ export default class App extends React.Component {
     })
   }
 
+  setActiveForm = (x) => {
+    this.setState({
+      form: x
+    })
+  }
+
   addProject = async () => {
     let data = {
       project_title: this.state.new_project_title,
@@ -130,39 +139,16 @@ export default class App extends React.Component {
       link: this.state.new_instructions_link
     }
     
-    await axios.get(BASE_URL + "/projects", data)
+    let response = await axios.post(BASE_URL + "/projects", data)
+    console.log(response)
   }
 
-  
-
   renderContent(){
-    if (this.state.active === "browse") {
-      return (
-        <React.Fragment>
-          <Browse setActive={this.setActive}
-                  all_data={this.state.all_data}/>
-        </React.Fragment>
-      );
-    } else if (this.state.active === "search") {
-      return (
-        <React.Fragment>
-          <Search setActive={this.setActive}
-                  search_word={this.state.search_word}
-                  category={this.state.category}
-                  craft_type={this.state.craft_type}
-                  time_required={this.state.time_required}
-                  difficulty={this.state.difficulty}
-                  getSearch={this.getSearch}
-                  updateFormField={this.updateFormField}
-                  category_list={this.state.category_list}
-                  craft_type_list={this.state.craft_type_list}
-                  search_data={this.state.search_data}/>
-        </React.Fragment>
-      );
-    } else if (this.state.active === "form") {
+    if (this.state.form === true) {
       return (
         <React.Fragment>
           <Form setActive={this.setActive}
+                setActiveForm={this.setActiveForm}
                 user_name={this.state.new_user_name}
                 project_title={this.state.new_project_title}
                 photo={this.state.new_photo}
@@ -186,21 +172,55 @@ export default class App extends React.Component {
       );
     }
 
+    if (this.state.active === "browse") {
+      return (
+        <React.Fragment>
+          <Browse setActive={this.setActive}
+                  setActiveForm={this.setActiveForm}
+                  all_data={this.state.all_data}/>
+        </React.Fragment>
+      );
+    } else if (this.state.active === "search") {
+      return (
+        <React.Fragment>
+          <Search setActive={this.setActive}
+                  search_word={this.state.search_word}
+                  category={this.state.category}
+                  craft_type={this.state.craft_type}
+                  time_required={this.state.time_required}
+                  difficulty={this.state.difficulty}
+                  getSearch={this.getSearch}
+                  updateFormField={this.updateFormField}
+                  category_list={this.state.category_list}
+                  craft_type_list={this.state.craft_type_list}/>
+        </React.Fragment>
+      );
+    } else if (this.state.active === "search_results") {
+      return (
+        <React.Fragment>
+          <SearchResults setActive={this.setActive}
+                        search_word={this.state.search_word}
+                        category={this.state.category}
+                        craft_type={this.state.craft_type}
+                        time_required={this.state.time_required}
+                        difficulty={this.state.difficulty}
+                        getSearch={this.getSearch}
+                        updateFormField={this.updateFormField}
+                        category_list={this.state.category_list}
+                        craft_type_list={this.state.craft_type_list}
+                        search_data={this.state.search_data}/>
+        </React.Fragment>
+      );
+    }
   }
+
+ 
+    
+ 
 
   render() {
     return(
       <React.Fragment>
-        <nav className="nav justify-content-between">
-          <nav className="nav">
-            <div className="nav-link" onClick={() => { this.setActive("browse") }}>Logo</div>
-          </nav>
-          <nav className="nav">
-            <div className="nav-link" onClick={() => { this.setActive("search") }}>Search</div>
-            <div className="nav-link" onClick={() => { this.setActive("form") }}>Share</div>
-          </nav>
-        </nav>
-
         {this.renderContent()}
       </React.Fragment>
     );

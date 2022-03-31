@@ -1,15 +1,17 @@
 import React from 'react'
 
-export default function Search (props) {
+export default function SearchResults (props) {
+
     return (
         <React.Fragment>
-            {/* Close button */}
-            <div className="row justify-content-end p-4">
-                <button type="button"
-                        className="btn-close"
-                        onClick={() => { props.setActive("browse") }}>
-                </button>
-            </div>
+            <nav className="nav justify-content-between">
+                <nav className="nav">
+                    <div className="nav-link" onClick={() => { props.setActive("browse") }}>Logo</div>
+                </nav>
+                <nav className="nav">
+                    <div className="nav-link" onClick={() => { props.setActive("form") }}>Share</div>
+                </nav>
+            </nav>
             
             {/* Search Bar */}
             <div className="col-12">
@@ -91,6 +93,26 @@ export default function Search (props) {
                         onClick={props.getSearch}
                     >Search</button>
                 </div>
+            </div>
+
+            <h3>Search Results</h3>
+
+            <div className="card-group row row-cols-1 row-cols-md-3 row-cols-lg-4 g-3 py-2">
+                {props.search_data.map((eachItem) => (
+                    <div className="col" key={eachItem._id}>
+                        <div className="card">
+                            <img src={eachItem.photo} height="320px" className="card-img-top" alt="..." />
+                            <div className="card-body">
+                                <h5 className="card-title">{eachItem.project_title}</h5>
+                                <p className="card-text text-muted">{eachItem.date_of_post}</p>
+                                <p className="mb-0">{eachItem.description}</p>
+                            </div>
+                            <div className="card-footer">
+                                <small className="text-muted">by {eachItem.user_name}</small>
+                            </div>
+                        </div>
+                    </div>
+                ))}
             </div>
         </React.Fragment>
     )

@@ -4,6 +4,15 @@ export default function Browse (props) {
 
     return (
         <React.Fragment>
+            <nav className="nav justify-content-between">
+                <nav className="nav">
+                    <div className="nav-link" onClick={() => { props.setActive("browse") }}>Logo</div>
+                </nav>
+                <nav className="nav">
+                    <div className="nav-link" onClick={() => { props.setActive("search") }}>Search</div>
+                    <div className="nav-link" onClick={() => { props.setActiveForm(true) }}>Share</div>
+                </nav>
+            </nav>
 
             <div className="mt-5">
                 <h3>Browse</h3>
