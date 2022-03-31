@@ -24,7 +24,7 @@ export default function Search (props) {
                             name="category"
                             value={props.category}
                             onChange={props.updateFormField}>
-                            <option>Select Category</option>
+                            <option value="">Select Category</option>
                             {props.category_list.map((c) =>
                             <option key={c.category}
                                     value={c.category}
@@ -40,7 +40,7 @@ export default function Search (props) {
                             name="craft_type"
                             value={props.craft_type}
                             onChange={props.updateFormField}>
-                            <option>Select Craft Type</option>
+                            <option value="">Select Craft Type</option>
                             {props.craft_type_list.map((a) =>
                             <option key={a.craft_type}
                                     value={a.craft_type}
@@ -56,7 +56,7 @@ export default function Search (props) {
                             name="time_required"
                             value={props.time_required}
                             onChange={props.updateFormField}>
-                            <option>Select Time Required</option>
+                            <option value="">Select Time Required</option>
                             <option value="less than 30 mins">Less than 30 mins</option>
                             <option value="30 mins - 60 mins">30 mins - 60 mins</option>
                             <option value="more than 60 mins">More than 60 mins</option>
@@ -69,7 +69,7 @@ export default function Search (props) {
                             name="difficulty"
                             value={props.difficulty}
                             onChange={props.updateFormField}>
-                            <option>Select Difficulty</option>
+                            <option value="">Select Difficulty</option>
                             <option value="easy">Easy</option>
                             <option value="normal">Normal</option>
                             <option value="hard">Hard</option>

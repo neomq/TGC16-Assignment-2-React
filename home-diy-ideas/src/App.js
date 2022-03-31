@@ -21,7 +21,7 @@ export default class App extends React.Component {
     // page
     active: "browse",
 
-    // search
+    // search project
     search_word: "",
     category: "",
     craft_type: "",
@@ -33,17 +33,23 @@ export default class App extends React.Component {
     category_list: [],
     craft_type_list: [],
 
-    // submit form
-    user_name: "",
-    project_title: "",
-    photo: "",
-    description: "",
-    category_1: "",
-    category_2: "",
-    category_3: "",
-    craft_type_1: "",
-    craft_type_2: "",
-    craft_type_3: ""
+    // create new project
+    // new_project: [],
+    new_user_name: "",
+    new_project_title: "",
+    new_photo: "",
+    new_description: "",
+    new_category_1: "",
+    new_category_2: "",
+    new_category_3: "",
+    new_craft_type_1: "",
+    new_craft_type_2: "",
+    new_craft_type_3: "",
+    new_supplies: "",
+    new_time_required: "",
+    new_difficulty: "",
+    new_instructions_text: "",
+    new_instructions_link: ""
   }
 
   fetchData = async () => {
@@ -55,31 +61,15 @@ export default class App extends React.Component {
   }
 
   getSearch = async () => {
-
-    let queryString = ""
-
-    // search word
-    if (this.state.search_word) {
-        queryString += `search_word=${this.state.search_word}`
-    }
-    // search category
-    if (this.state.category !== "Select Category") {
-        queryString += `&category=${this.state.category}`
-    }
-    // search craft_type
-    if (this.state.craft_type !== "Select Craft Type") {
-        queryString += `&craft_type=${this.state.craft_type}`
-    }
-    // search time_required
-    if (this.state.time_required !== "Select Time Required") {
-        queryString += `&time_required=${this.state.time_required}`
-    }
-    // search difficulty
-    if (this.state.difficulty !== "Select Difficulty") {
-        queryString += `&difficulty=${this.state.difficulty}`
-    }
-
-    let search_results = await axios.get(BASE_URL + "/projects/search/?" + queryString)
+    let search_results = await axios.get(BASE_URL + "/projects/search", {
+      params: {
+        'search_word': this.state.search_word,
+        'category': this.state.category,
+        'craft_type': this.state.craft_type,
+        'time_required': this.state.time_required,
+        'difficulty': this.state.difficulty
+      }
+    })
     // console.log(search_results)
     this.setState({
       search_data: search_results.data
@@ -121,6 +111,30 @@ export default class App extends React.Component {
     })
   }
 
+  addProject = async () => {
+    let data = {
+      project_title: this.state.new_project_title,
+      user_name: this.state.new_user_name,
+      photo: this.state.new_photo,
+      description: this.state.new_description,
+      supplies: this.state.new_supplies,
+      craft_type: this.state.new_craft_type_1 + "," + 
+                  this.state.new_craft_type_2 + "," +
+                  this.state.new_craft_type_3,
+      category: this.state.new_category_1 + "," +
+                this.state.new_category_2 + "," +
+                this.state.new_category_3,
+      time_required: this.state.new_time_required,
+      difficulty: this.state.new_difficulty,
+      text: this.state.new_instructions_text,
+      link: this.state.new_instructions_link
+    }
+    
+    await axios.get(BASE_URL + "/projects", data)
+  }
+
+  
+
   renderContent(){
     if (this.state.active === "browse") {
       return (
@@ -149,18 +163,24 @@ export default class App extends React.Component {
       return (
         <React.Fragment>
           <Form setActive={this.setActive}
-                user_name={this.state.user_name}
-                project_title={this.state.project_title}
-                photo={this.state.photo}
-                description={this.state.description}
-                category_1={this.state.category_1}
-                category_2={this.state.category_2}
-                category_3={this.state.category_3}
+                user_name={this.state.new_user_name}
+                project_title={this.state.new_project_title}
+                photo={this.state.new_photo}
+                description={this.state.new_description}
+                category_1={this.state.new_category_1}
+                category_2={this.state.new_category_2}
+                category_3={this.state.new_category_3}
                 category_list={this.state.category_list}
-                craft_type_1={this.state.craft_type_1}
-                craft_type_2={this.state.craft_type_2}
-                craft_type_3={this.state.craft_type_3}
+                craft_type_1={this.state.new_craft_type_1}
+                craft_type_2={this.state.new_craft_type_2}
+                craft_type_3={this.state.new_craft_type_3}
                 craft_type_list={this.state.craft_type_list}
+                supplies={this.state.new_supplies}
+                time_required={this.state.new_time_required}
+                difficulty={this.state.new_difficulty}
+                instructions_text={this.state.new_instructions_text}
+                instructions_link={this.state.new_instructions_link}
+                addProject={this.addProject}
                 updateFormField={this.updateFormField}/>
         </React.Fragment>
       );

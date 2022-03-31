@@ -11,9 +11,9 @@ export default function Form (props) {
             </div>
             <div>
                 <input className="form-control mt-4"
-                        name="user_name"
+                        name="new_user_name"
                         type="text"
-                        value={props.user_name}
+                        value={props.new_user_name}
                         onChange={props.updateFormField}
                         placeholder="Your Name"
                 />
@@ -29,9 +29,9 @@ export default function Form (props) {
                 <div>
                     <h6>Title of DIY project</h6>
                     <input className="form-control mt-2"
-                        name="project_title"
+                        name="new_project_title"
                         type="text"
-                        value={props.project_title}
+                        value={props.new_project_title}
                         onChange={props.updateFormField}
                         placeholder="e.g. wood mirror"
                     />
@@ -40,9 +40,9 @@ export default function Form (props) {
                 <div>
                     <h6>Image of artwork</h6>
                     <input className="form-control mt-2"
-                        name="photo"
+                        name="new_photo"
                         type="text"
-                        value={props.photo}
+                        value={props.new_photo}
                         onChange={props.updateFormField}
                         placeholder="Paste URL of image"
                     />
@@ -52,9 +52,9 @@ export default function Form (props) {
             {/* Details - Description */}
             <div className="mt-4">
                 <h6>Short Description (125 character max)</h6>
-                <textarea class="form-control mt-2" id="exampleFormControlTextarea1"
-                    name="description"
-                    value={props.description}
+                <textarea className="form-control mt-2" id="exampleFormControlTextarea1"
+                    name="new_description"
+                    value={props.new_description}
                     onChange={props.updateFormField}
                     placeholder="e.g. Simple DIY mirror framed in natural wood"
                 />
@@ -65,8 +65,8 @@ export default function Form (props) {
                 <div>
                     <h6>Category (select up to 3)</h6>
                     <select className="form-select"
-                        name="category_1"
-                        value={props.category_1}
+                        name="new_category_1"
+                        value={props.new_category_1}
                         onChange={props.updateFormField}>
                         <option>Select Category 1</option>
                         {props.category_list.map((c) =>
@@ -77,8 +77,8 @@ export default function Form (props) {
                         )}
                     </select>
                     <select className="form-select"
-                        name="category_2"
-                        value={props.category_2}
+                        name="new_category_2"
+                        value={props.new_category_2}
                         onChange={props.updateFormField}>
                         <option>Select Category 2</option>
                         {props.category_list.map((c) =>
@@ -89,8 +89,8 @@ export default function Form (props) {
                         )}
                     </select>
                     <select className="form-select"
-                        name="category_3"
-                        value={props.category_3}
+                        name="new_category_3"
+                        value={props.new_category_3}
                         onChange={props.updateFormField}>
                         <option>Select Category 3</option>
                         {props.category_list.map((c) =>
@@ -105,8 +105,8 @@ export default function Form (props) {
                 <div>
                     <h6>Type of craft (select up to 3)</h6>
                     <select className="form-select"
-                        name="craft_type_1"
-                        value={props.craft_type_1}
+                        name="new_craft_type_1"
+                        value={props.new_craft_type_1}
                         onChange={props.updateFormField}>
                         <option>Select Type 1</option>
                         {props.craft_type_list.map((a) =>
@@ -117,8 +117,8 @@ export default function Form (props) {
                         )}
                     </select>
                     <select className="form-select"
-                        name="craft_type_2"
-                        value={props.craft_type_2}
+                        name="new_craft_type_2"
+                        value={props.new_craft_type_2}
                         onChange={props.updateFormField}>
                         <option>Select Type 2</option>
                         {props.craft_type_list.map((a) =>
@@ -129,8 +129,8 @@ export default function Form (props) {
                         )}
                     </select>
                     <select className="form-select"
-                        name="craft_type_3"
-                        value={props.craft_type_3}
+                        name="new_craft_type_3"
+                        value={props.new_craft_type_3}
                         onChange={props.updateFormField}>
                         <option>Select Type 3</option>
                         {props.craft_type_list.map((a) =>
@@ -146,8 +146,10 @@ export default function Form (props) {
             {/* Tools & Materials */}
             <div className="mt-4">
                 <h6>Tools & Materials (seperated by comma)</h6>
-                <textarea class="form-control mt-2" id="exampleFormControlTextarea1"
-                    name=""
+                <textarea className="form-control mt-2"
+                    name="new_supplies"
+                    value={props.new_supplies}
+                    onChange={props.updateFormField}
                     placeholder="e.g. scissors,drill,paper"
                 />
             </div>
@@ -157,17 +159,42 @@ export default function Form (props) {
                 <div>
                     <h6>Time Required (in mins)</h6>
                     <input className="form-control mt-2"
-                        name=""
+                        name="new_time_required"
+                        value={props.new_time_required}
+                        onChange={props.updateFormField}
                         type="text"
-                        placeholder=""
+                        placeholder="e.g. 60"
                     />
                 </div>
                 <div>
                     <h6>Difficulty</h6>
-                    <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-outline-secondary">Easy</button>
-                        <button type="button" class="btn btn-outline-secondary">Normal</button>
-                        <button type="button" class="btn btn-outline-secondary">Hard</button>
+                    <div className="btn-group" role="group">
+                    <input type="radio" className="btn-check"
+                            name="new_difficulty"
+                            value="easy"
+                            checked={props.new_difficulty === "easy"}
+                            onChange={props.updateFormField}
+                            id="btnradio1"
+                            autocomplete="off"/>
+                    <label className="btn btn-outline-secondary" for="btnradio1">Easy</label>
+
+                    <input type="radio" className="btn-check"
+                            name="new_difficulty"
+                            value="normal"
+                            checked={props.new_difficulty === "normal"}
+                            onChange={props.updateFormField}
+                            id="btnradio2"
+                            autocomplete="off"/>
+                    <label className="btn btn-outline-secondary" for="btnradio2">Normal</label>
+
+                    <input type="radio" className="btn-check"
+                            name="new_difficulty"
+                            value="hard"
+                            checked={props.new_difficulty === "hard"}
+                            onChange={props.updateFormField}
+                            id="btnradio3"
+                            autocomplete="off"/>
+                    <label className="btn btn-outline-secondary" for="btnradio3">Hard</label>
                     </div>
                 </div>
             </div>
@@ -178,20 +205,27 @@ export default function Form (props) {
             </div>
             <div className="mt-4">
                 <h6>Description of steps (seperate each step by comma)</h6>
-                <textarea class="form-control mt-2" id="exampleFormControlTextarea1"
-                    name=""
-                    placeholder="e.g."
+                <textarea className="form-control mt-2"
+                            name="new_instructions_text"
+                            value={props.new_instructions_text}
+                            onChange={props.updateFormField}
+                            placeholder="e.g."
                 />
 
                 <h6 className="mt-4">Link to site (optional)</h6>
                 <input className="form-control mt-2"
+                        name="new_instructions_link"
                         type="text"
+                        value={props.new_instructions_link}
+                        onChange={props.updateFormField}
                         placeholder="Paste URL here"
                 />
             </div>
 
             {/* Submit */}
-            <button type="button" className="btn btn-primary mt-4">Submit</button>
+            <button type="button" className="btn btn-primary mt-4"
+                    onClick={props.addProject}>Submit</button>
+
         </React.Fragment>
     )
 }
