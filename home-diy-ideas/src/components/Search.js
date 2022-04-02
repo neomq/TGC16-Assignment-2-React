@@ -10,9 +10,9 @@ export default function Search (props) {
                         onClick={() => { props.setActive("browse") }}>
                 </button>
             </div>
-            
+
             {/* Search Bar */}
-            <div className="col-12">
+            <div className="col-12 mt-3">
                 {/* Search Input */}
                 <div>
                     <input className="form-control"
@@ -31,12 +31,12 @@ export default function Search (props) {
                             name="category"
                             value={props.category}
                             onChange={props.updateFormField}>
-                            <option value="">Select Category</option>
+                            <option value="">Category</option>
                             {props.category_list.map((c) =>
-                            <option key={c.category}
+                                <option key={c.category}
                                     value={c.category}
-                            >{c.form_display}
-                            </option>
+                                >{c.form_display}
+                                </option>
                             )}
                         </select>
                     </div>
@@ -47,12 +47,12 @@ export default function Search (props) {
                             name="craft_type"
                             value={props.craft_type}
                             onChange={props.updateFormField}>
-                            <option value="">Select Craft Type</option>
+                            <option value="">Craft Type</option>
                             {props.craft_type_list.map((a) =>
-                            <option key={a.craft_type}
+                                <option key={a.craft_type}
                                     value={a.craft_type}
-                            >{a.form_display}
-                            </option>
+                                >{a.form_display}
+                                </option>
                             )}
                         </select>
                     </div>
@@ -63,7 +63,7 @@ export default function Search (props) {
                             name="time_required"
                             value={props.time_required}
                             onChange={props.updateFormField}>
-                            <option value="">Select Time Required</option>
+                            <option value="">Time Required</option>
                             <option value="less than 30 mins">Less than 30 mins</option>
                             <option value="30 mins - 60 mins">30 mins - 60 mins</option>
                             <option value="more than 60 mins">More than 60 mins</option>
@@ -76,7 +76,7 @@ export default function Search (props) {
                             name="difficulty"
                             value={props.difficulty}
                             onChange={props.updateFormField}>
-                            <option value="">Select Difficulty</option>
+                            <option value="">Difficulty</option>
                             <option value="easy">Easy</option>
                             <option value="normal">Normal</option>
                             <option value="hard">Hard</option>

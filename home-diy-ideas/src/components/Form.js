@@ -10,7 +10,6 @@ export default function Form (props) {
                         onClick={() => { props.setActiveForm(false) }}
                 >Cancel
                 </button>
-                
             </div>
 
             <h3>Share your Home Decorating Idea</h3>
@@ -234,8 +233,8 @@ export default function Form (props) {
 
             {/* Submit */}
             <button type="button" className="btn btn-primary mt-4"
-                    onClick={props.addProject}>Submit</button>
-
+                    onClick={props.addProject}
+                    >Submit</button>
         </React.Fragment>
     )
 }

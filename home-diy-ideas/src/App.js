@@ -7,6 +7,7 @@ import Browse from './components/Browse.js'
 import SearchResults from './components/SearchResults.js'
 import Search from './components/Search.js'
 import Form from './components/Form.js'
+import View from './components/View.js'
 
 // const BASE_URL = "https://home-diy-ideas.herokuapp.com";
 
@@ -17,7 +18,8 @@ export default class App extends React.Component {
 
   state = {
     // database
-   all_data: [],
+    all_data: [],
+    project_data: {},
 
     // page
     active: "browse",
@@ -31,12 +33,11 @@ export default class App extends React.Component {
     difficulty: "",
     search_data: [],
 
-    // search form
+    // search filter
     category_list: [],
     craft_type_list: [],
 
     // create new project
-    // new_project: [],
     new_user_name: "",
     new_project_title: "",
     new_photo: "",
@@ -63,7 +64,7 @@ export default class App extends React.Component {
   }
 
   getSearch = async () => {
-    let search_results = await axios.get(BASE_URL + "/projects/search", {
+    let search_results = await axios.get(BASE_URL + "/projects_search", {
       params: {
         'search_word': this.state.search_word,
         'category': this.state.category,
@@ -97,7 +98,6 @@ export default class App extends React.Component {
 
   componentDidMount() {
     this.fetchData()
-    // this.getSearch()
     this.getCategories()
     this.getCraftTypes()
   }
@@ -121,26 +121,62 @@ export default class App extends React.Component {
   }
 
   addProject = async () => {
+    let craft_type = ""
+    if (this.state.new_craft_type_1) {
+      craft_type += this.state.new_craft_type_1
+    }
+    if (this.state.new_craft_type_2) {
+      craft_type += this.state.new_craft_type_2
+    }
+    if (this.state.new_craft_type_3) {
+      craft_type += this.state.new_craft_type_3
+    }
+
+    let category = ""
+    if (this.state.new_category_1) {
+      category += this.state.new_category_1
+    }
+    if (this.state.new_category_2) {
+      category += "," + this.state.new_category_2
+    }
+    if (this.state.new_category_3) {
+      category += "," + this.state.new_category_3
+    }
+
     let data = {
       project_title: this.state.new_project_title,
       user_name: this.state.new_user_name,
       photo: this.state.new_photo,
       description: this.state.new_description,
       supplies: this.state.new_supplies,
-      craft_type: this.state.new_craft_type_1 + "," + 
-                  this.state.new_craft_type_2 + "," +
-                  this.state.new_craft_type_3,
-      category: this.state.new_category_1 + "," +
-                this.state.new_category_2 + "," +
-                this.state.new_category_3,
+      craft_type: craft_type,
+      category: category,
       time_required: this.state.new_time_required,
       difficulty: this.state.new_difficulty,
       text: this.state.new_instructions_text,
       link: this.state.new_instructions_link
     }
     
-    let response = await axios.post(BASE_URL + "/projects", data)
-    console.log(response)
+    let data_added = await axios.post(BASE_URL + "/projects", data)
+    console.log(data_added.data)
+
+    let new_data = await axios.get(BASE_URL + "/projects")
+    this.setState({
+      form: false,
+      all_data: new_data.data
+    })
+  }
+
+  viewProject = async (id) => {
+
+    let project_id = "/" + id
+    let display_project = await axios.get(BASE_URL + "/projects" + project_id)
+    console.log(display_project.data)
+
+    this.setState({
+      active: "view",
+      project_data: display_project.data
+    })
   }
 
   renderContent(){
@@ -177,7 +213,8 @@ export default class App extends React.Component {
         <React.Fragment>
           <Browse setActive={this.setActive}
                   setActiveForm={this.setActiveForm}
-                  all_data={this.state.all_data}/>
+                  all_data={this.state.all_data}
+                  viewProject={this.viewProject}/>
         </React.Fragment>
       );
     } else if (this.state.active === "search") {
@@ -199,6 +236,7 @@ export default class App extends React.Component {
       return (
         <React.Fragment>
           <SearchResults setActive={this.setActive}
+                        setActiveForm={this.setActiveForm}
                         search_word={this.state.search_word}
                         category={this.state.category}
                         craft_type={this.state.craft_type}
@@ -208,15 +246,20 @@ export default class App extends React.Component {
                         updateFormField={this.updateFormField}
                         category_list={this.state.category_list}
                         craft_type_list={this.state.craft_type_list}
-                        search_data={this.state.search_data}/>
+                        search_data={this.state.search_data}
+                        viewProject={this.viewProject}/>
         </React.Fragment>
       );
+    } else if (this.state.active === "view") {
+      return (
+        <React.Fragment>
+          <View setActive={this.setActive}
+                setActiveForm={this.setActiveForm}
+                project_data={this.state.project_data}/>
+        </React.Fragment>
+      )
     }
   }
-
- 
-    
- 
 
   render() {
     return(
