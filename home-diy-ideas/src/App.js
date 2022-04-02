@@ -23,7 +23,9 @@ export default class App extends React.Component {
 
     // page
     active: "browse",
+    search: false,
     form: false,
+    display_project: false,
 
     // search project
     search_word: "",
@@ -73,10 +75,12 @@ export default class App extends React.Component {
         'difficulty': this.state.difficulty
       }
     })
-    // console.log(search_results)
+    // console.log(search_results.data)
     this.setState({
       search_data: search_results.data,
-      active: "search_results"
+      active: "search_results",
+      search: false,
+      display_project: false
     })
   }
 
@@ -110,13 +114,27 @@ export default class App extends React.Component {
 
   setActive = (page) => {
     this.setState({
-      active: page
+      active: page,
+      form: false,
+      display_project: false
     })
   }
 
   setActiveForm = (x) => {
     this.setState({
       form: x
+    })
+  }
+
+  setActiveSearch = (y) => {
+    this.setState({
+      search: y
+    })
+  }
+
+  displayProject = (d) => {
+    this.setState({
+      display_project: false
     })
   }
 
@@ -174,7 +192,7 @@ export default class App extends React.Component {
     console.log(display_project.data)
 
     this.setState({
-      active: "view",
+      display_project: true,
       project_data: display_project.data
     })
   }
@@ -208,19 +226,11 @@ export default class App extends React.Component {
       );
     }
 
-    if (this.state.active === "browse") {
-      return (
-        <React.Fragment>
-          <Browse setActive={this.setActive}
-                  setActiveForm={this.setActiveForm}
-                  all_data={this.state.all_data}
-                  viewProject={this.viewProject}/>
-        </React.Fragment>
-      );
-    } else if (this.state.active === "search") {
+    if (this.state.search === true) {
       return (
         <React.Fragment>
           <Search setActive={this.setActive}
+                  setActiveSearch={this.setActiveSearch}
                   search_word={this.state.search_word}
                   category={this.state.category}
                   craft_type={this.state.craft_type}
@@ -230,6 +240,30 @@ export default class App extends React.Component {
                   updateFormField={this.updateFormField}
                   category_list={this.state.category_list}
                   craft_type_list={this.state.craft_type_list}/>
+        </React.Fragment>
+      )
+    }
+
+    if (this.state.display_project === true) {
+      return (
+        <React.Fragment>
+          <View setActive={this.setActive}
+                setActiveForm={this.setActiveForm}
+                setActiveSearch={this.setActiveSearch}
+                displayProject={this.displayProject}
+                project_data={this.state.project_data}/>
+        </React.Fragment>
+      )
+    }
+
+    if (this.state.active === "browse") {
+      return (
+        <React.Fragment>
+          <Browse setActive={this.setActive}
+                  setActiveForm={this.setActiveForm}
+                  setActiveSearch={this.setActiveSearch}
+                  all_data={this.state.all_data}
+                  viewProject={this.viewProject}/>
         </React.Fragment>
       );
     } else if (this.state.active === "search_results") {
@@ -250,14 +284,6 @@ export default class App extends React.Component {
                         viewProject={this.viewProject}/>
         </React.Fragment>
       );
-    } else if (this.state.active === "view") {
-      return (
-        <React.Fragment>
-          <View setActive={this.setActive}
-                setActiveForm={this.setActiveForm}
-                project_data={this.state.project_data}/>
-        </React.Fragment>
-      )
     }
   }
 

@@ -184,8 +184,8 @@ export default function Form (props) {
                             checked={props.new_difficulty === "easy"}
                             onChange={props.updateFormField}
                             id="btnradio1"
-                            autocomplete="off"/>
-                    <label className="btn btn-outline-secondary" for="btnradio1">Easy</label>
+                            autoComplete="off"/>
+                    <label className="btn btn-outline-secondary" htmlFor="btnradio1">Easy</label>
 
                     <input type="radio" className="btn-check"
                             name="new_difficulty"
@@ -193,8 +193,8 @@ export default function Form (props) {
                             checked={props.new_difficulty === "normal"}
                             onChange={props.updateFormField}
                             id="btnradio2"
-                            autocomplete="off"/>
-                    <label className="btn btn-outline-secondary" for="btnradio2">Normal</label>
+                            autoComplete="off"/>
+                    <label className="btn btn-outline-secondary" htmlFor="btnradio2">Normal</label>
 
                     <input type="radio" className="btn-check"
                             name="new_difficulty"
@@ -202,8 +202,8 @@ export default function Form (props) {
                             checked={props.new_difficulty === "hard"}
                             onChange={props.updateFormField}
                             id="btnradio3"
-                            autocomplete="off"/>
-                    <label className="btn btn-outline-secondary" for="btnradio3">Hard</label>
+                            autoComplete="off"/>
+                    <label className="btn btn-outline-secondary" htmlFor="btnradio3">Hard</label>
                     </div>
                 </div>
             </div>

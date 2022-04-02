@@ -8,10 +8,16 @@ export default function View (props) {
                     <div className="nav-link" onClick={() => { props.setActive("browse") }}>Logo</div>
                 </nav>
                 <nav className="nav">
-                    <div className="nav-link" onClick={() => { props.setActive("search") }}>Search</div>
+                    <div className="nav-link" onClick={() => { props.setActiveSearch(true) }}>Search</div>
                     <div className="nav-link" onClick={() => { props.setActiveForm(true) }}>Share</div>
                 </nav>
             </nav>
+
+            <button type="button"
+                        className="btn btn-outline-secondary"
+                        onClick={() => { props.displayProject(false) }}
+                >Back
+            </button>
 
             {props.project_data.map((p) => (
                 <div key={p._id}>
@@ -36,7 +42,7 @@ export default function View (props) {
                             <p>{i}</p>
                         </React.Fragment>
                     ))}
-                    
+
                     <p>{p.instructions.link}</p>
                 </div>
             ))}

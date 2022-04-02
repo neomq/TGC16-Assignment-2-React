@@ -7,7 +7,7 @@ export default function Search (props) {
             <div className="row justify-content-end p-4">
                 <button type="button"
                         className="btn-close"
-                        onClick={() => { props.setActive("browse") }}>
+                        onClick={() => { props.setActiveSearch(false) }}>
                 </button>
             </div>
 
