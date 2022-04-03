@@ -3,6 +3,7 @@ import React from 'react'
 export default function View (props) {
     return (
         <React.Fragment>
+            {/* Nav Bar */}
             <nav className="nav justify-content-between">
                 <nav className="nav">
                     <div className="nav-link" onClick={() => { props.setActive("browse") }}>Logo</div>
@@ -13,6 +14,7 @@ export default function View (props) {
                 </nav>
             </nav>
 
+            {/* Back Button */}
             <button type="button"
                         className="btn btn-outline-secondary"
                         onClick={() => { props.displayProject(false) }}
@@ -21,6 +23,12 @@ export default function View (props) {
 
             {props.project_data.map((p) => (
                 <div key={p._id}>
+                    {/* Edit Button */}
+                    <button type="button"
+                        className="btn btn-outline-secondary"
+                        onClick={props.editProject}
+                    >Edit
+                    </button>
                     <p>{p.category.join(",")}</p>
                     <h2>{p.project_title}</h2>
                     <p>{p.description}</p>
@@ -32,7 +40,7 @@ export default function View (props) {
                     <h5>Supplies</h5>
                     <ol>
                         {p.supplies.map((s, index) => (
-                                <li key={s}>{index+1}. {s}</li>
+                            <li key={s}>{index+1}. {s}</li>
                         ))}
                     </ol>
                     <h5>How to Do it</h5>

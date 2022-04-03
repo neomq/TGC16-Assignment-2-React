@@ -4,6 +4,7 @@ export default function SearchResults (props) {
 
     return (
         <React.Fragment>
+            {/* Nav Bar */}
             <nav className="nav justify-content-between">
                 <nav className="nav">
                     <div className="nav-link" onClick={() => { props.setActive("browse") }}>Logo</div>

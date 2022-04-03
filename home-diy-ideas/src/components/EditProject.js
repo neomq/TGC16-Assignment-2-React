@@ -1,13 +1,13 @@
 import React from 'react'
 
-export default function Form (props) {
+export default function EditProject (props) {
     return (
         <React.Fragment>
             {/* Close button */}
             <div className="d-grid d-flex justify-content-end">
                 <button type="button"
                         className="btn btn-outline-secondary"
-                        onClick={() => { props.setActiveForm(false)}}
+                        onClick={props.cancelEdit}
                 >Cancel
                 </button>
             </div>
@@ -69,7 +69,7 @@ export default function Form (props) {
                 />
             </div>
 
-            {/* Category & Craft Filters */}
+            {/* Category & Craft Select */}
             <div className="d-flex mt-4">
                 <div>
                     <h6>Category (select up to 3)</h6>
@@ -77,7 +77,7 @@ export default function Form (props) {
                         name="new_category_1"
                         value={props.new_category_1}
                         onChange={props.updateFormField}>
-                        <option>Select Category 1</option>
+                        <option value="">-- None --</option>
                         {props.category_list.map((c) =>
                             <option key={c.category}
                                 value={c.category}
@@ -89,7 +89,7 @@ export default function Form (props) {
                         name="new_category_2"
                         value={props.new_category_2}
                         onChange={props.updateFormField}>
-                        <option>Select Category 2</option>
+                        <option value="">-- None --</option>
                         {props.category_list.map((c) =>
                             <option key={c.category}
                                 value={c.category}
@@ -101,7 +101,7 @@ export default function Form (props) {
                         name="new_category_3"
                         value={props.new_category_3}
                         onChange={props.updateFormField}>
-                        <option>Select Category 3</option>
+                        <option value="">-- None --</option>
                         {props.category_list.map((c) =>
                             <option key={c.category}
                                 value={c.category}
@@ -117,7 +117,7 @@ export default function Form (props) {
                         name="new_craft_type_1"
                         value={props.new_craft_type_1}
                         onChange={props.updateFormField}>
-                        <option>Select Type 1</option>
+                        <option value="">-- None --</option>
                         {props.craft_type_list.map((a) =>
                             <option key={a.craft_type}
                                 value={a.craft_type}
@@ -129,7 +129,7 @@ export default function Form (props) {
                         name="new_craft_type_2"
                         value={props.new_craft_type_2}
                         onChange={props.updateFormField}>
-                        <option>Select Type 2</option>
+                        <option value="">-- None --</option>
                         {props.craft_type_list.map((a) =>
                             <option key={a.craft_type}
                                 value={a.craft_type}
@@ -141,7 +141,7 @@ export default function Form (props) {
                         name="new_craft_type_3"
                         value={props.new_craft_type_3}
                         onChange={props.updateFormField}>
-                        <option>Select Type 3</option>
+                        <option value="">-- None --</option>
                         {props.craft_type_list.map((a) =>
                             <option key={a.craft_type}
                                 value={a.craft_type}
@@ -233,8 +233,8 @@ export default function Form (props) {
 
             {/* Submit */}
             <button type="button" className="btn btn-primary mt-4"
-                    onClick={props.addProject}
-                    >Submit</button>
+                    onClick={props.updateProject}
+                    >Update</button>
         </React.Fragment>
     )
 }
