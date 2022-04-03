@@ -10,7 +10,7 @@ export default function SearchResults (props) {
                     <div className="nav-link" onClick={() => { props.setActive("browse") }}>Logo</div>
                 </nav>
                 <nav className="nav">
-                    <div className="nav-link" onClick={() => { props.setActiveForm(true) }}>Share</div>
+                    <div className="nav-link" onClick={props.displayAddForm}>Share</div>
                 </nav>
             </nav>
             

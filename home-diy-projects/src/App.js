@@ -83,7 +83,8 @@ export default class App extends React.Component {
       search_data: search_results.data,
       active: "search_results",
       search: false,
-      display_project: false
+      display_project: false,
+      project_data: {}
     })
   }
 
@@ -123,9 +124,49 @@ export default class App extends React.Component {
     })
   }
 
-  setActiveForm = (x) => {
+  cancelAdd = () => {
     this.setState({
-      form: x
+      form: false,
+
+      // reset form fields
+      new_user_name: "",
+      new_project_title: "",
+      new_photo: "",
+      new_description: "",
+      new_category_1: "",
+      new_category_2: "",
+      new_category_3: "",
+      new_craft_type_1: "",
+      new_craft_type_2: "",
+      new_craft_type_3: "",
+      new_supplies: "",
+      new_time_required: "",
+      new_difficulty: "",
+      new_instructions_text: "",
+      new_instructions_link: ""
+    })
+  }
+
+  displayAddForm = () => {
+    this.setState({
+      form: true,
+
+      // reset form fields
+      new_user_name: "",
+      new_project_title: "",
+      new_photo: "",
+      new_description: "",
+      new_category_1: "",
+      new_category_2: "",
+      new_category_3: "",
+      new_craft_type_1: "",
+      new_craft_type_2: "",
+      new_craft_type_3: "",
+      new_supplies: "",
+      new_time_required: "",
+      new_difficulty: "",
+      new_instructions_text: "",
+      new_instructions_link: ""
     })
   }
 
@@ -161,7 +202,8 @@ export default class App extends React.Component {
 
   displayProject = (d) => {
     this.setState({
-      display_project: d
+      display_project: d,
+      project_data: {}
     })
   }
 
@@ -209,6 +251,7 @@ export default class App extends React.Component {
     let new_data = await axios.get(BASE_URL + "/projects")
     this.setState({
       form: false,
+      active: "browse",
       all_data: new_data.data
     })
   }
@@ -303,9 +346,36 @@ export default class App extends React.Component {
     // display updated data on main page
     let new_data = await axios.get(BASE_URL + "/projects")
 
+    // display updated data on search results page
+    let search_results = await axios.get(BASE_URL + "/projects_search", {
+      params: {
+        'search_word': this.state.search_word,
+        'category': this.state.category,
+        'craft_type': this.state.craft_type,
+        'time_required': this.state.time_required,
+        'difficulty': this.state.difficulty
+      }
+    })
+
     this.setState({
       edit_form: false,
       project_data: updated_project.data,
+      all_data: new_data.data,
+      search_data: search_results.data
+    })
+  }
+
+  deleteProject = async () => {
+    // retrieve id of project to delete
+    let project_id = "/" + this.state.project_data[0]._id
+
+    await axios.delete(BASE_URL + "/projects" + project_id)
+
+    // display updated data on main page
+    let new_data = await axios.get(BASE_URL + "/projects")
+    
+    this.setState({
+      display_project: false,
       all_data: new_data.data
     })
   }
@@ -315,7 +385,7 @@ export default class App extends React.Component {
       return (
         <React.Fragment>
           <AddProject setActive={this.setActive}
-                setActiveForm={this.setActiveForm}
+                cancelAdd={this.cancelAdd}
                 resetForm={this.resetForm}
                 new_user_name={this.state.new_user_name}
                 new_project_title={this.state.new_project_title}
@@ -389,11 +459,12 @@ export default class App extends React.Component {
       return (
         <React.Fragment>
           <ViewProject setActive={this.setActive}
-                setActiveForm={this.setActiveForm}
+                displayAddForm={this.displayAddForm}
                 setActiveSearch={this.setActiveSearch}
                 displayProject={this.displayProject}
                 project_data={this.state.project_data}
-                editProject={this.editProject}/>
+                editProject={this.editProject}
+                deleteProject={this.deleteProject}/>
         </React.Fragment>
       )
     }
@@ -402,7 +473,7 @@ export default class App extends React.Component {
       return (
         <React.Fragment>
           <BrowseProject setActive={this.setActive}
-                  setActiveForm={this.setActiveForm}
+                  displayAddForm={this.displayAddForm}
                   setActiveSearch={this.setActiveSearch}
                   all_data={this.state.all_data}
                   viewProject={this.viewProject}/>
@@ -412,7 +483,7 @@ export default class App extends React.Component {
       return (
         <React.Fragment>
           <SearchResults setActive={this.setActive}
-                        setActiveForm={this.setActiveForm}
+                        displayAddForm={this.displayAddForm}
                         search_word={this.state.search_word}
                         category={this.state.category}
                         craft_type={this.state.craft_type}

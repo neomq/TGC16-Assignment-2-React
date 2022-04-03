@@ -7,7 +7,7 @@ export default function AddProject (props) {
             <div className="d-grid d-flex justify-content-end">
                 <button type="button"
                         className="btn btn-outline-secondary"
-                        onClick={() => { props.setActiveForm(false)}}
+                        onClick={props.cancelAdd}
                 >Cancel
                 </button>
             </div>

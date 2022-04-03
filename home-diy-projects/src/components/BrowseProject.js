@@ -11,7 +11,7 @@ export default function BrowseProject (props) {
                 </nav>
                 <nav className="nav">
                     <div className="nav-link" onClick={() => { props.setActiveSearch(true) }}>Search</div>
-                    <div className="nav-link" onClick={() => { props.setActiveForm(true) }}>Share</div>
+                    <div className="nav-link" onClick={props.displayAddForm}>Share</div>
                 </nav>
             </nav>
 

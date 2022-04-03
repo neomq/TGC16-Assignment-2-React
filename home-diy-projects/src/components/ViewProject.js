@@ -10,7 +10,7 @@ export default function ViewProject (props) {
                 </nav>
                 <nav className="nav">
                     <div className="nav-link" onClick={() => { props.setActiveSearch(true) }}>Search</div>
-                    <div className="nav-link" onClick={() => { props.setActiveForm(true) }}>Share</div>
+                    <div className="nav-link" onClick={props.displayAddForm}>Share</div>
                 </nav>
             </nav>
 
@@ -21,14 +21,22 @@ export default function ViewProject (props) {
                 >Back
             </button>
 
+            {/* Edit Button */}
+            <button type="button"
+                className="btn btn-outline-secondary"
+                onClick={props.editProject}
+            >Edit
+            </button>
+
+            {/* Delete Button */}
+            <button type="button"
+                className="btn btn-outline-secondary"
+                onClick={props.deleteProject}
+            >Delete
+            </button>
+
             {props.project_data.map((p) => (
                 <div key={p._id}>
-                    {/* Edit Button */}
-                    <button type="button"
-                        className="btn btn-outline-secondary"
-                        onClick={props.editProject}
-                    >Edit
-                    </button>
                     <p>{p.category.join(",")}</p>
                     <h2>{p.project_title}</h2>
                     <p>{p.description}</p>
