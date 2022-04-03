@@ -2,7 +2,7 @@ import React from 'react'
 import './App.css'
 import axios from "axios"
 import "bootstrap/dist/css/bootstrap.min.css"
-import "bootstrap/dist/js/bootstrap.bundle.js"
+import "bootstrap/dist/js/bootstrap.bundle"
 import BrowseProject from './components/BrowseProject.js'
 import SearchResults from './components/SearchResults.js'
 import SearchProject from './components/SearchProject.js'
