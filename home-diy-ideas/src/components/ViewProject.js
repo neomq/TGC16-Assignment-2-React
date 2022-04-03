@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function View (props) {
+export default function ViewProject (props) {
     return (
         <React.Fragment>
             {/* Nav Bar */}

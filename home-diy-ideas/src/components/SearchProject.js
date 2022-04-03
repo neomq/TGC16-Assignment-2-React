@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Search (props) {
+export default function SearchProject (props) {
     return (
         <React.Fragment>
             {/* Close button */}

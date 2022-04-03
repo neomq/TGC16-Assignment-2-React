@@ -3,12 +3,12 @@ import './App.css'
 import axios from "axios"
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap.bundle.js"
-import Browse from './components/Browse.js'
+import BrowseProject from './components/BrowseProject.js'
 import SearchResults from './components/SearchResults.js'
-import Search from './components/Search.js'
-import Form from './components/Form.js'
+import SearchProject from './components/SearchProject.js'
+import AddProject from './components/AddProject.js'
 import EditProject from './components/EditProject.js'
-import View from './components/View.js'
+import ViewProject from './components/ViewProject.js'
 
 // const BASE_URL = "https://home-diy-ideas.herokuapp.com";
 
@@ -314,7 +314,7 @@ export default class App extends React.Component {
     if (this.state.form === true) {
       return (
         <React.Fragment>
-          <Form setActive={this.setActive}
+          <AddProject setActive={this.setActive}
                 setActiveForm={this.setActiveForm}
                 resetForm={this.resetForm}
                 new_user_name={this.state.new_user_name}
@@ -370,7 +370,7 @@ export default class App extends React.Component {
     if (this.state.search === true) {
       return (
         <React.Fragment>
-          <Search setActive={this.setActive}
+          <SearchProject setActive={this.setActive}
                   setActiveSearch={this.setActiveSearch}
                   search_word={this.state.search_word}
                   category={this.state.category}
@@ -388,7 +388,7 @@ export default class App extends React.Component {
     if (this.state.display_project === true) {
       return (
         <React.Fragment>
-          <View setActive={this.setActive}
+          <ViewProject setActive={this.setActive}
                 setActiveForm={this.setActiveForm}
                 setActiveSearch={this.setActiveSearch}
                 displayProject={this.displayProject}
@@ -401,7 +401,7 @@ export default class App extends React.Component {
     if (this.state.active === "browse") {
       return (
         <React.Fragment>
-          <Browse setActive={this.setActive}
+          <BrowseProject setActive={this.setActive}
                   setActiveForm={this.setActiveForm}
                   setActiveSearch={this.setActiveSearch}
                   all_data={this.state.all_data}

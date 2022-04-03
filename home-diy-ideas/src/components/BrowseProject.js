@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Browse (props) {
+export default function BrowseProject (props) {
 
     return (
         <React.Fragment>
