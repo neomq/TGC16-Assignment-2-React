@@ -23,7 +23,10 @@ export default function BrowseProject (props) {
                 {props.all_data.map((p) => (
                     <div className="col" key={p._id}>
                             <div className="card"
-                                onClick={() => { props.viewProject(p._id) }}>
+                                onClick={() => {
+                                    props.viewProject(p._id)
+                                    props.getComments(p._id)
+                                }}>
                                 <img src={p.photo} height="320px" className="card-img-top" alt="..." />
                                 <div className="card-body">
                                     <h5 className="card-title">{p.project_title}</h5>

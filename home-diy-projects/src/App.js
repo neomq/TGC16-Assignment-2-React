@@ -20,7 +20,9 @@ export default class App extends React.Component {
   state = {
     // database
     all_data: [],
+    search_data: [],
     project_data: {},
+    comments_data: [],
 
     // page display
     active: "browse",
@@ -35,8 +37,7 @@ export default class App extends React.Component {
     craft_type: "",
     time_required: "",
     difficulty: "",
-    search_data: [],
-
+    
     // search filters
     category_list: [],
     craft_type_list: [],
@@ -60,6 +61,9 @@ export default class App extends React.Component {
     new_instructions_text_added: "",
     new_instructions_link: "",
     projectId_to_update: ""
+
+    // create and update comments
+
   }
 
   fetchData = async () => {
@@ -305,6 +309,22 @@ export default class App extends React.Component {
     })
   }
 
+  getComments = async (id) => {
+    let project_id = "/" + id
+    let comments = await axios.get(BASE_URL + "/projects" + project_id + "/comments")
+
+    let comments_data = []
+    if (comments.data[0].comments) {
+      comments_data = comments.data[0].comments
+    } else {
+      comments_data = []
+    }
+
+    this.setState({
+      comments_data: comments_data
+    })
+  }
+
   editProject = () => {
     // retrieve data of project to edit from state
     let to_edit = this.state.project_data[0]
@@ -512,7 +532,9 @@ export default class App extends React.Component {
                 displayProject={this.displayProject}
                 project_data={this.state.project_data}
                 editProject={this.editProject}
-                deleteProject={this.deleteProject}/>
+                deleteProject={this.deleteProject}
+                comments_data={this.state.comments_data}
+                getComments={this.getComments}/>
         </React.Fragment>
       )
     }
@@ -524,7 +546,8 @@ export default class App extends React.Component {
                   displayAddForm={this.displayAddForm}
                   setActiveSearch={this.setActiveSearch}
                   all_data={this.state.all_data}
-                  viewProject={this.viewProject}/>
+                  viewProject={this.viewProject}
+                  getComments={this.getComments}/>
         </React.Fragment>
       );
     } else if (this.state.active === "search_results") {
