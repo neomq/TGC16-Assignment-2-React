@@ -154,13 +154,28 @@ export default function AddProject (props) {
 
             {/* Tools & Materials */}
             <div className="mt-4">
-                <h6>Tools & Materials (seperated by comma)</h6>
-                <textarea className="form-control mt-2"
-                    name="new_supplies"
-                    value={props.new_supplies}
+                <h6>Tools & Materials</h6>
+                <input type="text" className="form-control mt-2"
+                    name="new_supplies_added"
+                    value={props.new_supplies_added}
                     onChange={props.updateFormField}
                     placeholder="e.g. scissors,drill,paper"
                 />
+                <button type="button"
+                        className="btn btn-outline-secondary px-2"
+                        onClick={ ()=>{props.addNewSupplies()} }
+                >+ Add</button>
+
+                {props.new_supplies.map( (s, index) => (
+                    <div key={index}>
+                        <input type="text"
+                            className="form-control mt-3"
+                            value={props.new_supplies[index]}
+                            onChange={(e)=>{
+                                props.updateSupplies(index, e.target.value)
+                        }}/>
+                    </div>
+                ))}
             </div>
 
             {/* Time Required & Difficulty */}
@@ -213,13 +228,28 @@ export default function AddProject (props) {
                 <h5>3. Instructions</h5>
             </div>
             <div className="mt-4">
-                <h6>Description of steps (seperate each step by comma)</h6>
+                <h6>Description of steps</h6>
                 <textarea className="form-control mt-2"
-                            name="new_instructions_text"
-                            value={props.new_instructions_text}
+                            name="new_instructions_text_added"
+                            value={props.new_instructions_text_added}
                             onChange={props.updateFormField}
-                            placeholder="e.g."
+                            placeholder="Description"
                 />
+                <button type="button"
+                        className="btn btn-outline-secondary px-2"
+                        onClick={ ()=>{props.addNewInstruction()} }
+                >+ Add</button>
+
+                {props.new_instructions_text.map( (i, index) => (
+                    <div key={index}>
+                        <textarea className="form-control mt-3"
+                                value={props.new_instructions_text[index]}
+                                onChange={(e)=>{
+                                    props.updateInstructions(index, e.target.value)
+                                }}
+                        />
+                    </div>
+                ) ) }
 
                 <h6 className="mt-4">Link to site (optional)</h6>
                 <input className="form-control mt-2"

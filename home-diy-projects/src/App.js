@@ -25,7 +25,7 @@ export default class App extends React.Component {
     // page display
     active: "browse",
     search: false,
-    form: false,
+    add_form: false,
     edit_form: false,
     display_project: false,
 
@@ -52,10 +52,12 @@ export default class App extends React.Component {
     new_craft_type_1: "",
     new_craft_type_2: "",
     new_craft_type_3: "",
-    new_supplies: "",
+    new_supplies: [],
+    new_supplies_added: "",
     new_time_required: "",
     new_difficulty: "",
-    new_instructions_text: "",
+    new_instructions_text: [],
+    new_instructions_text_added: "",
     new_instructions_link: "",
     projectId_to_update: ""
   }
@@ -119,14 +121,14 @@ export default class App extends React.Component {
   setActive = (page) => {
     this.setState({
       active: page,
-      form: false,
+      add_form: false,
       display_project: false
     })
   }
 
   cancelAdd = () => {
     this.setState({
-      form: false,
+      add_form: false,
 
       // reset form fields
       new_user_name: "",
@@ -139,17 +141,17 @@ export default class App extends React.Component {
       new_craft_type_1: "",
       new_craft_type_2: "",
       new_craft_type_3: "",
-      new_supplies: "",
+      new_supplies: [],
       new_time_required: "",
       new_difficulty: "",
-      new_instructions_text: "",
+      new_instructions_text: [],
       new_instructions_link: ""
     })
   }
 
   displayAddForm = () => {
     this.setState({
-      form: true,
+      add_form: true,
 
       // reset form fields
       new_user_name: "",
@@ -162,10 +164,10 @@ export default class App extends React.Component {
       new_craft_type_1: "",
       new_craft_type_2: "",
       new_craft_type_3: "",
-      new_supplies: "",
+      new_supplies: [],
       new_time_required: "",
       new_difficulty: "",
-      new_instructions_text: "",
+      new_instructions_text: [],
       new_instructions_link: ""
     })
   }
@@ -185,10 +187,10 @@ export default class App extends React.Component {
       new_craft_type_1: "",
       new_craft_type_2: "",
       new_craft_type_3: "",
-      new_supplies: "",
+      new_supplies: [],
       new_time_required: "",
       new_difficulty: "",
-      new_instructions_text: "",
+      new_instructions_text: [],
       new_instructions_link: "",
       projectId_to_update: ""
     })
@@ -250,9 +252,43 @@ export default class App extends React.Component {
     // display updated set of data on main page
     let new_data = await axios.get(BASE_URL + "/projects")
     this.setState({
-      form: false,
+      add_form: false,
       active: "browse",
       all_data: new_data.data
+    })
+  }
+
+  addNewSupplies = () => {
+    this.setState({
+      new_supplies: [...this.state.new_supplies, this.state.new_supplies_added],
+      new_supplies_added: ""
+    })
+  }
+
+  addNewInstruction = () => {
+    this.setState({
+      new_instructions_text: [...this.state.new_instructions_text, this.state.new_instructions_text_added],
+      new_instructions_text_added: ""
+    })
+  }
+
+  updateSupplies = (index, newValue) => {
+    this.setState({
+      'new_supplies': [
+        ...this.state.new_supplies.slice(0,index),
+        newValue,
+        ...this.state.new_supplies.slice(index+1)
+      ]
+    })
+  }
+
+  updateInstructions = (index, newValue) => {
+    this.setState({
+      'new_instructions_text': [
+        ...this.state.new_instructions_text.slice(0,index),
+        newValue,
+        ...this.state.new_instructions_text.slice(index+1)
+      ]
     })
   }
 
@@ -288,10 +324,10 @@ export default class App extends React.Component {
       new_craft_type_1: to_edit.craft_type[0],
       new_craft_type_2: to_edit.craft_type[1],
       new_craft_type_3: to_edit.craft_type[2],
-      new_supplies: to_edit.supplies.toString(),
+      new_supplies: to_edit.supplies,
       new_time_required: to_edit.time_required,
       new_difficulty: to_edit.difficulty,
-      new_instructions_text: to_edit.instructions.text.toString(),
+      new_instructions_text: to_edit.instructions.text,
       new_instructions_link: to_edit.instructions.link,
 
       // id of project to update
@@ -381,7 +417,7 @@ export default class App extends React.Component {
   }
 
   renderContent(){
-    if (this.state.form === true) {
+    if (this.state.add_form === true) {
       return (
         <React.Fragment>
           <AddProject setActive={this.setActive}
@@ -400,11 +436,17 @@ export default class App extends React.Component {
                 new_craft_type_3={this.state.new_craft_type_3}
                 craft_type_list={this.state.craft_type_list}
                 new_supplies={this.state.new_supplies}
+                new_supplies_added={this.state.new_supplies_added}
                 new_time_required={this.state.new_time_required}
                 new_difficulty={this.state.new_difficulty}
                 new_instructions_text={this.state.new_instructions_text}
+                new_instructions_text_added={this.state.new_instructions_text_added}
                 new_instructions_link={this.state.new_instructions_link}
                 addProject={this.addProject}
+                addNewSupplies={this.addNewSupplies}
+                updateSupplies={this.updateSupplies}
+                addNewInstruction={this.addNewInstruction}
+                updateInstructions={this.updateInstructions}
                 updateFormField={this.updateFormField}/>
         </React.Fragment>
       );
@@ -428,10 +470,16 @@ export default class App extends React.Component {
                     new_craft_type_3={this.state.new_craft_type_3}
                     craft_type_list={this.state.craft_type_list}
                     new_supplies={this.state.new_supplies}
+                    new_supplies_added={this.state.new_supplies_added}
                     new_time_required={this.state.new_time_required}
                     new_difficulty={this.state.new_difficulty}
                     new_instructions_text={this.state.new_instructions_text}
+                    new_instructions_text_added={this.state.new_instructions_text_added}
                     new_instructions_link={this.state.new_instructions_link}
+                    addNewSupplies={this.addNewSupplies}
+                    updateSupplies={this.updateSupplies}
+                    addNewInstruction={this.addNewInstruction}
+                    updateInstructions={this.updateInstructions}
                     updateFormField={this.updateFormField}/>
         </React.Fragment>
       );
