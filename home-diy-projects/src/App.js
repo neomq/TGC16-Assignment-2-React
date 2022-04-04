@@ -60,10 +60,11 @@ export default class App extends React.Component {
     new_instructions_text: [],
     new_instructions_text_added: "",
     new_instructions_link: "",
-    projectId_to_update: ""
+    projectId_to_update: "",
 
     // create and update comments
-
+    new_comment_name: "",
+    new_comment_text: ""
   }
 
   fetchData = async () => {
@@ -209,7 +210,27 @@ export default class App extends React.Component {
   displayProject = (d) => {
     this.setState({
       display_project: d,
-      project_data: {}
+      project_data: {},
+      comments_data: []
+    })
+  }
+
+  addComment = async () => {
+    let data = {
+      comment_name: this.state.new_comment_name,
+      comment_text: this.state.new_comment_text
+    }
+
+    let project_id = "/" + this.state.project_data[0]._id
+
+    let comment_to_add = await axios.post(BASE_URL + "/projects" + project_id + "/comments", data)
+    console.log(comment_to_add.data)
+
+    // display updated comments on project page
+    let updated_comments = await axios.get(BASE_URL + "/projects" + project_id + "/comments")
+
+    this.setState({
+      comments_data: updated_comments.data[0].comments
     })
   }
 
@@ -250,8 +271,8 @@ export default class App extends React.Component {
       link: this.state.new_instructions_link
     }
     
-    let data_added = await axios.post(BASE_URL + "/projects", data)
-    console.log(data_added.data)
+    let data_to_add = await axios.post(BASE_URL + "/projects", data)
+    console.log(data_to_add.data)
 
     // display updated set of data on main page
     let new_data = await axios.get(BASE_URL + "/projects")
@@ -321,7 +342,9 @@ export default class App extends React.Component {
     }
 
     this.setState({
-      comments_data: comments_data
+      comments_data: comments_data,
+      new_comment_name: "",
+      new_comment_text: ""
     })
   }
 
@@ -534,7 +557,11 @@ export default class App extends React.Component {
                 editProject={this.editProject}
                 deleteProject={this.deleteProject}
                 comments_data={this.state.comments_data}
-                getComments={this.getComments}/>
+                getComments={this.getComments}
+                new_comment_name={this.state.new_comment_name}
+                new_comment_text={this.state.new_comment_text}
+                addComment={this.addComment}
+                updateFormField={this.updateFormField}/>
         </React.Fragment>
       )
     }
@@ -565,7 +592,8 @@ export default class App extends React.Component {
                         category_list={this.state.category_list}
                         craft_type_list={this.state.craft_type_list}
                         search_data={this.state.search_data}
-                        viewProject={this.viewProject}/>
+                        viewProject={this.viewProject}
+                        getComments={this.getComments}/>
         </React.Fragment>
       );
     }

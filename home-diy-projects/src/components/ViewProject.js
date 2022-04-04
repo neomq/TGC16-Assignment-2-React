@@ -71,13 +71,24 @@ export default function ViewProject (props) {
                 <h4>Leave a comment</h4>
                 <div>
                     <label className="form-label">Name</label>
-                    <input type="text" className="form-control" placeholder="Your name" />
+                    <input type="text"
+                            className="form-control"
+                            name="new_comment_name"
+                            value={props.new_comment_name}
+                            onChange={props.updateFormField}
+                            placeholder="Your name" />
                 </div>
                 <div>
                     <label className="form-label">Comment</label>
-                    <textarea className="form-control" placeholder="Your comments" />
+                    <textarea className="form-control"
+                            name="new_comment_text"
+                            value={props.new_comment_text}
+                            onChange={props.updateFormField}
+                            placeholder="Your comments"
+                    />
                 </div>
-                <button type="button" className="btn btn-dark">Submit</button>
+                <button type="button" className="btn btn-dark"
+                        onClick={props.addComment}>Post Comment</button>
                 
                 {props.comments_data.map((c) => (
                     <div key={c.comment_id}>
