@@ -25,6 +25,7 @@ export default function AddProject (props) {
                         value={props.new_user_name}
                         onChange={props.updateFormField}
                         placeholder="Your Name"
+                        autocomplete="off"
                 />
             </div>
 
@@ -43,6 +44,7 @@ export default function AddProject (props) {
                         value={props.new_project_title}
                         onChange={props.updateFormField}
                         placeholder="e.g. wood mirror"
+                        autocomplete="off"
                     />
                 </div>
 
@@ -54,6 +56,7 @@ export default function AddProject (props) {
                         value={props.new_photo}
                         onChange={props.updateFormField}
                         placeholder="Paste URL of image"
+                        autocomplete="off"
                     />
                 </div>
             </div>
@@ -77,7 +80,7 @@ export default function AddProject (props) {
                         name="new_category_1"
                         value={props.new_category_1}
                         onChange={props.updateFormField}>
-                        <option>Select Category 1</option>
+                        <option value="">-- None --</option>
                         {props.category_list.map((c) =>
                             <option key={c.category}
                                 value={c.category}
@@ -89,7 +92,7 @@ export default function AddProject (props) {
                         name="new_category_2"
                         value={props.new_category_2}
                         onChange={props.updateFormField}>
-                        <option>Select Category 2</option>
+                        <option value="">-- None --</option>
                         {props.category_list.map((c) =>
                             <option key={c.category}
                                 value={c.category}
@@ -101,7 +104,7 @@ export default function AddProject (props) {
                         name="new_category_3"
                         value={props.new_category_3}
                         onChange={props.updateFormField}>
-                        <option>Select Category 3</option>
+                        <option value="">-- None --</option>
                         {props.category_list.map((c) =>
                             <option key={c.category}
                                 value={c.category}
@@ -117,7 +120,7 @@ export default function AddProject (props) {
                         name="new_craft_type_1"
                         value={props.new_craft_type_1}
                         onChange={props.updateFormField}>
-                        <option>Select Type 1</option>
+                        <option value="">-- None --</option>
                         {props.craft_type_list.map((a) =>
                             <option key={a.craft_type}
                                 value={a.craft_type}
@@ -129,7 +132,7 @@ export default function AddProject (props) {
                         name="new_craft_type_2"
                         value={props.new_craft_type_2}
                         onChange={props.updateFormField}>
-                        <option>Select Type 2</option>
+                        <option value="">-- None --</option>
                         {props.craft_type_list.map((a) =>
                             <option key={a.craft_type}
                                 value={a.craft_type}
@@ -141,7 +144,7 @@ export default function AddProject (props) {
                         name="new_craft_type_3"
                         value={props.new_craft_type_3}
                         onChange={props.updateFormField}>
-                        <option>Select Type 3</option>
+                        <option value="">-- None --</option>
                         {props.craft_type_list.map((a) =>
                             <option key={a.craft_type}
                                 value={a.craft_type}
@@ -160,6 +163,7 @@ export default function AddProject (props) {
                     value={props.new_supplies_added}
                     onChange={props.updateFormField}
                     placeholder="e.g. scissors,drill,paper"
+                    autocomplete="off"
                 />
                 <button type="button"
                         className="btn btn-outline-secondary px-2"
@@ -188,6 +192,7 @@ export default function AddProject (props) {
                         onChange={props.updateFormField}
                         type="text"
                         placeholder="e.g. 60"
+                        autocomplete="off"
                     />
                 </div>
                 <div>
@@ -258,6 +263,7 @@ export default function AddProject (props) {
                         value={props.new_instructions_link}
                         onChange={props.updateFormField}
                         placeholder="Paste URL here"
+                        autocomplete="off"
                 />
             </div>
 

@@ -5,7 +5,6 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap.bundle"
 import BrowseProject from './components/BrowseProject.js'
 import SearchResults from './components/SearchResults.js'
-import SearchProject from './components/SearchProject.js'
 import AddProject from './components/AddProject.js'
 import EditProject from './components/EditProject.js'
 import ViewProject from './components/ViewProject.js'
@@ -26,7 +25,6 @@ export default class App extends React.Component {
 
     // page display
     active: "browse",
-    search: false,
     add_form: false,
     edit_form: false,
     display_project: false,
@@ -112,12 +110,6 @@ export default class App extends React.Component {
     this.fetchData()
     this.getCategories()
     this.getCraftTypes()
-  }
-
-  setActiveSearch = (y) => {
-    this.setState({
-      search: y
-    })
   }
 
   getSearch = async () => {
@@ -582,30 +574,11 @@ export default class App extends React.Component {
       );
     }
 
-    if (this.state.search === true) {
-      return (
-        <React.Fragment>
-          <SearchProject setActive={this.setActive}
-                  setActiveSearch={this.setActiveSearch}
-                  search_word={this.state.search_word}
-                  category={this.state.category}
-                  craft_type={this.state.craft_type}
-                  time_required={this.state.time_required}
-                  difficulty={this.state.difficulty}
-                  getSearch={this.getSearch}
-                  updateFormField={this.updateFormField}
-                  category_list={this.state.category_list}
-                  craft_type_list={this.state.craft_type_list}/>
-        </React.Fragment>
-      )
-    }
-
     if (this.state.display_project === true) {
       return (
         <React.Fragment>
           <ViewProject setActive={this.setActive}
                 displayAddForm={this.displayAddForm}
-                setActiveSearch={this.setActiveSearch}
                 displayProject={this.displayProject}
                 project_data={this.state.project_data}
                 editProject={this.editProject}
@@ -620,7 +593,15 @@ export default class App extends React.Component {
                 editComment={this.editComment}
                 updateComment={this.updateComment}
                 deleteComment={this.deleteComment}
-                updateFormField={this.updateFormField}/>
+                updateFormField={this.updateFormField}
+                search_word={this.state.search_word}
+                category={this.state.category}
+                craft_type={this.state.craft_type}
+                time_required={this.state.time_required}
+                difficulty={this.state.difficulty}
+                getSearch={this.getSearch}
+                category_list={this.state.category_list}
+                craft_type_list={this.state.craft_type_list}/>
         </React.Fragment>
       )
     }
@@ -630,10 +611,18 @@ export default class App extends React.Component {
         <React.Fragment>
           <BrowseProject setActive={this.setActive}
                   displayAddForm={this.displayAddForm}
-                  setActiveSearch={this.setActiveSearch}
                   all_data={this.state.all_data}
                   viewProject={this.viewProject}
-                  getComments={this.getComments}/>
+                  getComments={this.getComments}
+                  search_word={this.state.search_word}
+                  category={this.state.category}
+                  craft_type={this.state.craft_type}
+                  time_required={this.state.time_required}
+                  difficulty={this.state.difficulty}
+                  getSearch={this.getSearch}
+                  updateFormField={this.updateFormField}
+                  category_list={this.state.category_list}
+                  craft_type_list={this.state.craft_type_list}/>
         </React.Fragment>
       );
     } else if (this.state.active === "search_results") {
