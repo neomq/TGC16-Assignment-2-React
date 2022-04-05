@@ -310,6 +310,7 @@ export default class App extends React.Component {
     // retrieve id of project to delete
     let project_id = "/" + this.state.project_data[0]._id
 
+    // delete project
     await axios.delete(BASE_URL + "/projects" + project_id)
 
     // display updated data on main page
@@ -462,9 +463,13 @@ export default class App extends React.Component {
     })
   }
 
-  getCommentId = (id) => {
+  editComment = (id, name, text) => {
     this.setState({
-      commentId_to_update: id
+      commentId_to_update: id,
+
+      // display comment to edit
+      update_comment_name: name,
+      update_comment_text: text
     })
   }
 
@@ -487,6 +492,24 @@ export default class App extends React.Component {
       comments_data: updated_comments.data[0].comments,
       update_comment_name: "",
       update_comment_text: ""
+    })
+  }
+
+  deleteComment = async (id) => {
+    // retrieve id of project
+    let project_id = "/" + this.state.project_data[0]._id
+
+    // retrieve id of comment to delete
+    let comment_id_todelete = "/" + id
+
+    // delete comment
+    await axios.delete(BASE_URL + "/projects" + project_id + "/comments" + comment_id_todelete)
+
+    // display updated comment in the comments section
+    let updated_comments = await axios.get(BASE_URL + "/projects" + project_id + "/comments")
+
+    this.setState({
+      comments_data: updated_comments.data[0].comments
     })
   }
 
@@ -594,8 +617,9 @@ export default class App extends React.Component {
                 addComment={this.addComment}
                 update_comment_name={this.state.update_comment_name}
                 update_comment_text={this.state.update_comment_text}
-                getCommentId={this.getCommentId}
+                editComment={this.editComment}
                 updateComment={this.updateComment}
+                deleteComment={this.deleteComment}
                 updateFormField={this.updateFormField}/>
         </React.Fragment>
       )

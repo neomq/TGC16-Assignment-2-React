@@ -106,9 +106,17 @@ export default function ViewProject (props) {
                                     data-bs-toggle="modal"
                                     data-bs-target="#staticBackdrop"
                                     onClick={() => {
-                                        props.getCommentId(c.comment_id)
+                                        props.editComment(c.comment_id, c.comment_name, c.comment_text)
                                     }}
                                 >Edit
+                                </button>
+                                {/* Delete Button */}
+                                <button type="button"
+                                    className="btn btn-sm btn-outline-dark"
+                                    onClick={() => {
+                                        props.deleteComment(c.comment_id)
+                                    }}
+                                >Delete
                                 </button>
                             </div>
                             <div className="card-body">
