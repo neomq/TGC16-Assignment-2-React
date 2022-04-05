@@ -25,7 +25,7 @@ export default function EditProject (props) {
                         value={props.new_user_name}
                         onChange={props.updateFormField}
                         placeholder="Your Name"
-                        autocomplete="off"
+                        autoComplete="off"
                 />
             </div>
 
@@ -44,7 +44,7 @@ export default function EditProject (props) {
                         value={props.new_project_title}
                         onChange={props.updateFormField}
                         placeholder="e.g. wood mirror"
-                        autocomplete="off"
+                        autoComplete="off"
                     />
                 </div>
 
@@ -56,7 +56,7 @@ export default function EditProject (props) {
                         value={props.new_photo}
                         onChange={props.updateFormField}
                         placeholder="Paste URL of image"
-                        autocomplete="off"
+                        autoComplete="off"
                     />
                 </div>
             </div>
@@ -163,7 +163,7 @@ export default function EditProject (props) {
                     value={props.new_supplies_added}
                     onChange={props.updateFormField}
                     placeholder="e.g. scissors,drill,paper"
-                    autocomplete="off"
+                    autoComplete="off"
                 />
                 <button type="button"
                         className="btn btn-outline-secondary px-2"
@@ -192,7 +192,7 @@ export default function EditProject (props) {
                         onChange={props.updateFormField}
                         type="text"
                         placeholder="e.g. 60"
-                        autocomplete="off"
+                        autoComplete="off"
                     />
                 </div>
                 <div>
@@ -263,7 +263,7 @@ export default function EditProject (props) {
                         value={props.new_instructions_link}
                         onChange={props.updateFormField}
                         placeholder="Paste URL here"
-                        autocomplete="off"
+                        autoComplete="off"
                 />
             </div>
 

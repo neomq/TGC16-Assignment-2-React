@@ -9,16 +9,19 @@ export default function ViewProject (props) {
                     <div className="nav-link" onClick={() => { props.setActive("browse") }}>Logo</div>
                 </nav>
                 <nav className="nav">
+                    {/* Search Button */}
                     <button type="button"
                             className="btn btn-primary"
                             data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">
+                            data-bs-target="#searchModal">
                     Search
                     </button>
-                    <div className="nav-link" onClick={props.displayAddForm}>Share</div>
+                    
+                    {/* Submit Button */}
+                    <div className="nav-link" onClick={props.displayAddForm}>Submit</div>
 
                     {/* Search Bar Modal */}
-                    <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div className="modal fade" id="searchModal" tabIndex="-1" aria-hidden="true">
                         <div className="modal-dialog modal-xl">
                             <div className="modal-content">
                                 <div className="row justify-content-end py-3 px-4">
@@ -112,7 +115,7 @@ export default function ViewProject (props) {
                             </div>
                         </div>
                     </div>
-                    {/* End of Modal */}
+                    {/* End of Search Bar Modal */}
                 </nav>
             </nav>
 
