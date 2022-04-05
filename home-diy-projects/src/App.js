@@ -64,7 +64,24 @@ export default class App extends React.Component {
 
     // create and update comments
     new_comment_name: "",
-    new_comment_text: ""
+    new_comment_text: "",
+    update_comment_name: "",
+    update_comment_text: "",
+    commentId_to_update: ""
+  }
+
+  updateFormField = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
+
+  setActive = (page) => {
+    this.setState({
+      active: page,
+      add_form: false,
+      display_project: false
+    })
   }
 
   fetchData = async () => {
@@ -72,26 +89,6 @@ export default class App extends React.Component {
     console.log(response.data)
     this.setState({
       all_data: response.data
-    })
-  }
-
-  getSearch = async () => {
-    let search_results = await axios.get(BASE_URL + "/projects_search", {
-      params: {
-        'search_word': this.state.search_word,
-        'category': this.state.category,
-        'craft_type': this.state.craft_type,
-        'time_required': this.state.time_required,
-        'difficulty': this.state.difficulty
-      }
-    })
-    // console.log(search_results.data)
-    this.setState({
-      search_data: search_results.data,
-      active: "search_results",
-      search: false,
-      display_project: false,
-      project_data: {}
     })
   }
 
@@ -117,93 +114,29 @@ export default class App extends React.Component {
     this.getCraftTypes()
   }
 
-  updateFormField = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value
-    })
-  }
-
-  setActive = (page) => {
-    this.setState({
-      active: page,
-      add_form: false,
-      display_project: false
-    })
-  }
-
-  cancelAdd = () => {
-    this.setState({
-      add_form: false,
-
-      // reset form fields
-      new_user_name: "",
-      new_project_title: "",
-      new_photo: "",
-      new_description: "",
-      new_category_1: "",
-      new_category_2: "",
-      new_category_3: "",
-      new_craft_type_1: "",
-      new_craft_type_2: "",
-      new_craft_type_3: "",
-      new_supplies: [],
-      new_time_required: "",
-      new_difficulty: "",
-      new_instructions_text: [],
-      new_instructions_link: ""
-    })
-  }
-
-  displayAddForm = () => {
-    this.setState({
-      add_form: true,
-
-      // reset form fields
-      new_user_name: "",
-      new_project_title: "",
-      new_photo: "",
-      new_description: "",
-      new_category_1: "",
-      new_category_2: "",
-      new_category_3: "",
-      new_craft_type_1: "",
-      new_craft_type_2: "",
-      new_craft_type_3: "",
-      new_supplies: [],
-      new_time_required: "",
-      new_difficulty: "",
-      new_instructions_text: [],
-      new_instructions_link: ""
-    })
-  }
-
-  cancelEdit = () => {
-    this.setState({
-      edit_form: false,
-
-      // reset form fields to empty state
-      new_user_name: "",
-      new_project_title: "",
-      new_photo: "",
-      new_description: "",
-      new_category_1: "",
-      new_category_2: "",
-      new_category_3: "",
-      new_craft_type_1: "",
-      new_craft_type_2: "",
-      new_craft_type_3: "",
-      new_supplies: [],
-      new_time_required: "",
-      new_difficulty: "",
-      new_instructions_text: [],
-      new_instructions_link: "",
-      projectId_to_update: ""
-    })
-  }
-
   setActiveSearch = (y) => {
     this.setState({
       search: y
+    })
+  }
+
+  getSearch = async () => {
+    let search_results = await axios.get(BASE_URL + "/projects_search", {
+      params: {
+        'search_word': this.state.search_word,
+        'category': this.state.category,
+        'craft_type': this.state.craft_type,
+        'time_required': this.state.time_required,
+        'difficulty': this.state.difficulty
+      }
+    })
+    // console.log(search_results.data)
+    this.setState({
+      search_data: search_results.data,
+      active: "search_results",
+      search: false,
+      display_project: false,
+      project_data: {}
     })
   }
 
@@ -215,22 +148,15 @@ export default class App extends React.Component {
     })
   }
 
-  addComment = async () => {
-    let data = {
-      comment_name: this.state.new_comment_name,
-      comment_text: this.state.new_comment_text
-    }
+  viewProject = async (id) => {
 
-    let project_id = "/" + this.state.project_data[0]._id
-
-    let comment_to_add = await axios.post(BASE_URL + "/projects" + project_id + "/comments", data)
-    console.log(comment_to_add.data)
-
-    // display updated comments on project page
-    let updated_comments = await axios.get(BASE_URL + "/projects" + project_id + "/comments")
+    let project_id = "/" + id
+    let display_project = await axios.get(BASE_URL + "/projects" + project_id)
+    console.log(display_project.data)
 
     this.setState({
-      comments_data: updated_comments.data[0].comments
+      display_project: true,
+      project_data: display_project.data
     })
   }
 
@@ -280,71 +206,6 @@ export default class App extends React.Component {
       add_form: false,
       active: "browse",
       all_data: new_data.data
-    })
-  }
-
-  addNewSupplies = () => {
-    this.setState({
-      new_supplies: [...this.state.new_supplies, this.state.new_supplies_added],
-      new_supplies_added: ""
-    })
-  }
-
-  addNewInstruction = () => {
-    this.setState({
-      new_instructions_text: [...this.state.new_instructions_text, this.state.new_instructions_text_added],
-      new_instructions_text_added: ""
-    })
-  }
-
-  updateSupplies = (index, newValue) => {
-    this.setState({
-      'new_supplies': [
-        ...this.state.new_supplies.slice(0,index),
-        newValue,
-        ...this.state.new_supplies.slice(index+1)
-      ]
-    })
-  }
-
-  updateInstructions = (index, newValue) => {
-    this.setState({
-      'new_instructions_text': [
-        ...this.state.new_instructions_text.slice(0,index),
-        newValue,
-        ...this.state.new_instructions_text.slice(index+1)
-      ]
-    })
-  }
-
-  viewProject = async (id) => {
-
-    let project_id = "/" + id
-    let display_project = await axios.get(BASE_URL + "/projects" + project_id)
-    console.log(display_project.data)
-
-    this.setState({
-      display_project: true,
-      project_data: display_project.data
-
-    })
-  }
-
-  getComments = async (id) => {
-    let project_id = "/" + id
-    let comments = await axios.get(BASE_URL + "/projects" + project_id + "/comments")
-
-    let comments_data = []
-    if (comments.data[0].comments) {
-      comments_data = comments.data[0].comments
-    } else {
-      comments_data = []
-    }
-
-    this.setState({
-      comments_data: comments_data,
-      new_comment_name: "",
-      new_comment_text: ""
     })
   }
 
@@ -415,6 +276,7 @@ export default class App extends React.Component {
       link: this.state.new_instructions_link
     }
 
+    // update project
     let project_id = "/" + this.state.projectId_to_update
     let update_project = await axios.put(BASE_URL + "/projects" + project_id, data_to_update)
     console.log(update_project.data)
@@ -456,6 +318,175 @@ export default class App extends React.Component {
     this.setState({
       display_project: false,
       all_data: new_data.data
+    })
+  }
+
+  displayAddForm = () => {
+    this.setState({
+      add_form: true,
+
+      // reset form fields
+      new_user_name: "",
+      new_project_title: "",
+      new_photo: "",
+      new_description: "",
+      new_category_1: "",
+      new_category_2: "",
+      new_category_3: "",
+      new_craft_type_1: "",
+      new_craft_type_2: "",
+      new_craft_type_3: "",
+      new_supplies: [],
+      new_time_required: "",
+      new_difficulty: "",
+      new_instructions_text: [],
+      new_instructions_link: ""
+    })
+  }
+
+  addNewSupplies = () => {
+    this.setState({
+      new_supplies: [...this.state.new_supplies, this.state.new_supplies_added],
+      new_supplies_added: ""
+    })
+  }
+
+  addNewInstruction = () => {
+    this.setState({
+      new_instructions_text: [...this.state.new_instructions_text, this.state.new_instructions_text_added],
+      new_instructions_text_added: ""
+    })
+  }
+
+  updateSupplies = (index, newValue) => {
+    this.setState({
+      'new_supplies': [
+        ...this.state.new_supplies.slice(0,index),
+        newValue,
+        ...this.state.new_supplies.slice(index+1)
+      ]
+    })
+  }
+
+  updateInstructions = (index, newValue) => {
+    this.setState({
+      'new_instructions_text': [
+        ...this.state.new_instructions_text.slice(0,index),
+        newValue,
+        ...this.state.new_instructions_text.slice(index+1)
+      ]
+    })
+  }
+
+  cancelAdd = () => {
+    this.setState({
+      add_form: false,
+
+      // reset form fields
+      new_user_name: "",
+      new_project_title: "",
+      new_photo: "",
+      new_description: "",
+      new_category_1: "",
+      new_category_2: "",
+      new_category_3: "",
+      new_craft_type_1: "",
+      new_craft_type_2: "",
+      new_craft_type_3: "",
+      new_supplies: [],
+      new_time_required: "",
+      new_difficulty: "",
+      new_instructions_text: [],
+      new_instructions_link: ""
+    })
+  }
+
+  cancelEdit = () => {
+    this.setState({
+      edit_form: false,
+
+      // reset form fields to empty state
+      new_user_name: "",
+      new_project_title: "",
+      new_photo: "",
+      new_description: "",
+      new_category_1: "",
+      new_category_2: "",
+      new_category_3: "",
+      new_craft_type_1: "",
+      new_craft_type_2: "",
+      new_craft_type_3: "",
+      new_supplies: [],
+      new_time_required: "",
+      new_difficulty: "",
+      new_instructions_text: [],
+      new_instructions_link: "",
+      projectId_to_update: ""
+    })
+  }
+
+  getComments = async (id) => {
+    let project_id = "/" + id
+    let comments = await axios.get(BASE_URL + "/projects" + project_id + "/comments")
+
+    let comments_data = []
+    if (comments.data[0].comments) {
+      comments_data = comments.data[0].comments
+    } else {
+      comments_data = []
+    }
+
+    this.setState({
+      comments_data: comments_data
+    })
+  }
+
+  addComment = async () => {
+    let data = {
+      comment_name: this.state.new_comment_name,
+      comment_text: this.state.new_comment_text
+    }
+
+    let project_id = "/" + this.state.project_data[0]._id
+
+    let comment_to_add = await axios.post(BASE_URL + "/projects" + project_id + "/comments", data)
+    console.log(comment_to_add.data)
+
+    // display updated comments on project page
+    let new_comments = await axios.get(BASE_URL + "/projects" + project_id + "/comments")
+
+    this.setState({
+      comments_data: new_comments.data[0].comments,
+      new_comment_name: "",
+      new_comment_text: ""
+    })
+  }
+
+  getCommentId = (id) => {
+    this.setState({
+      commentId_to_update: id
+    })
+  }
+
+  updateComment = async () => {
+    let data_to_update = {
+      comment_name: this.state.update_comment_name,
+      comment_text: this.state.update_comment_text
+    }
+
+    // update comment
+    let project_id = "/" + this.state.project_data[0]._id
+    let comment_id = "/" + this.state.commentId_to_update
+    let update_comment = await axios.put(BASE_URL + "/projects" + project_id + "/comments" + comment_id, data_to_update)
+    console.log(update_comment.data)
+
+    // display updated comment in the comments section
+    let updated_comments = await axios.get(BASE_URL + "/projects" + project_id + "/comments")
+
+    this.setState({
+      comments_data: updated_comments.data[0].comments,
+      update_comment_name: "",
+      update_comment_text: ""
     })
   }
 
@@ -561,6 +592,10 @@ export default class App extends React.Component {
                 new_comment_name={this.state.new_comment_name}
                 new_comment_text={this.state.new_comment_text}
                 addComment={this.addComment}
+                update_comment_name={this.state.update_comment_name}
+                update_comment_text={this.state.update_comment_text}
+                getCommentId={this.getCommentId}
+                updateComment={this.updateComment}
                 updateFormField={this.updateFormField}/>
         </React.Fragment>
       )
