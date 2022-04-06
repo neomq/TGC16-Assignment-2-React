@@ -26,15 +26,9 @@ export default function AddProject (props) {
                         value={props.new_user_name}
                         onChange={props.updateFormField}
                         placeholder="Your Name"
-                        autocomplete="off"
+                        autoComplete="off"
                         required
                     />
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                    <div class="invalid-feedback">
-                        Please enter your name.
-                    </div>
                 </div>
 
                 {/* 2. Details */}
@@ -52,7 +46,7 @@ export default function AddProject (props) {
                             value={props.new_project_title}
                             onChange={props.updateFormField}
                             placeholder="e.g. wood mirror"
-                            autocomplete="off"
+                            autoComplete="off"
                         />
                     </div>
 
@@ -64,7 +58,7 @@ export default function AddProject (props) {
                             value={props.new_photo}
                             onChange={props.updateFormField}
                             placeholder="Paste URL of image"
-                            autocomplete="off"
+                            autoComplete="off"
                         />
                     </div>
                 </div>
@@ -212,7 +206,7 @@ export default function AddProject (props) {
                                 checked={props.new_difficulty === "easy"}
                                 onChange={props.updateFormField}
                                 id="btnradio1"
-                                autoComplete="off" />
+                                autoComplete="off"/>
                             <label className="btn btn-outline-secondary" htmlFor="btnradio1">Easy</label>
 
                             <input type="radio" className="btn-check"
@@ -221,17 +215,17 @@ export default function AddProject (props) {
                                 checked={props.new_difficulty === "normal"}
                                 onChange={props.updateFormField}
                                 id="btnradio2"
-                                autoComplete="off" />
+                                autoComplete="off"/>
                             <label className="btn btn-outline-secondary" htmlFor="btnradio2">Normal</label>
 
                             <input type="radio" className="btn-check"
                                 name="new_difficulty"
-                                value="hard"
-                                checked={props.new_difficulty === "hard"}
+                                value="challenging"
+                                checked={props.new_difficulty === "challenging"}
                                 onChange={props.updateFormField}
                                 id="btnradio3"
-                                autoComplete="off" />
-                            <label className="btn btn-outline-secondary" htmlFor="btnradio3">Hard</label>
+                                autoComplete="off"/>
+                            <label className="btn btn-outline-secondary" htmlFor="btnradio3">Challenging</label>
                         </div>
                     </div>
                 </div>
@@ -271,7 +265,7 @@ export default function AddProject (props) {
                         value={props.new_instructions_link}
                         onChange={props.updateFormField}
                         placeholder="Paste URL here"
-                        autocomplete="off"
+                        autoComplete="off"
                     />
                 </div>
 

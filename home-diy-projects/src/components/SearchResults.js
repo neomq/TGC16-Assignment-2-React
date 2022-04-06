@@ -5,13 +5,19 @@ export default function SearchResults (props) {
     return (
         <React.Fragment>
             {/* Nav Bar */}
-            <nav className="nav justify-content-between">
+            <nav className="nav justify-content-between py-3 border-bottom">
                 <nav className="nav">
-                    <div className="nav-link" onClick={() => { props.setActive("browse") }}>Logo</div>
+                    <button type="button"
+                        className="text btn-sec btn rounded-0 py-1 px-3"
+                        onClick={() => { props.setActive("browse") }}
+                    >HOME
+                    </button>
                 </nav>
                 <nav className="nav">
                     {/* Submit Button */}
-                    <div className="nav-link" onClick={props.displayAddForm}>Submit</div>
+                    <button type="button" className="text btn-sec btn rounded-0 py-1 px-3"
+                        onClick={props.displayAddForm}>
+                        SUBMIT</button>
                 </nav>
             </nav>
             

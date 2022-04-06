@@ -218,12 +218,12 @@ export default function EditProject (props) {
 
                     <input type="radio" className="btn-check"
                             name="new_difficulty"
-                            value="hard"
-                            checked={props.new_difficulty === "hard"}
+                            value="challenging"
+                            checked={props.new_difficulty === "challenging"}
                             onChange={props.updateFormField}
                             id="btnradio3"
                             autoComplete="off"/>
-                    <label className="btn btn-outline-secondary" htmlFor="btnradio3">Hard</label>
+                    <label className="btn btn-outline-secondary" htmlFor="btnradio3">Challenging</label>
                     </div>
                 </div>
             </div>
