@@ -130,11 +130,12 @@ export default class App extends React.Component {
       display_project: false,
       project_data: {},
 
-      //reset filters
+      //reset search
       category: "",
       craft_type: "",
       time_required: "",
-      difficulty: ""
+      difficulty: "",
+      search_word: ""
     })
   }
 

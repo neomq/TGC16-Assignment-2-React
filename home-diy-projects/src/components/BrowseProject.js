@@ -5,21 +5,21 @@ export default function BrowseProject (props) {
     return (
         <React.Fragment>
             {/* Nav Bar */}
-            <nav className="nav justify-content-between py-3 border-bottom">
-                <nav className="nav">
+            <nav className="navbar fixed-top justify-content-between py-3 border-bottom">
+                <div className="div">
                     <button type="button"
                             className="text btn-sec btn rounded-0 py-1 px-3"
                             onClick={() => { props.setActive("browse") }}
                     >HOME
                     </button>
-                </nav>
-                <nav className="nav">
+                </div>
+                <div className="div">
                     {/* Submit Button */}
                     <button type="button" className="text btn-sec btn rounded-0 py-1 px-3"
                         onClick={props.displayAddForm}>
-                        SUBMIT</button>
+                        SUBMIT DECOR</button>
                     
-                    <div class="vr"></div>
+                    <div className="vr"></div>
 
                     {/* Search Button */}
                     <button type="button"
@@ -31,7 +31,7 @@ export default function BrowseProject (props) {
 
                     {/* Search Bar Modal */}
                     <div className="modal fade" id="searchModal" tabIndex="-1" aria-hidden="true">
-                        <div className="modal-dialog modal-xl">
+                        <div className="modal-dialog modal-dialog-centered modal-xl">
                             <div className="modal-content">
                                 <div className="row justify-content-end pt-4 pb-1 px-5">
                                     <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -128,12 +128,12 @@ export default function BrowseProject (props) {
                         </div>
                     </div>
                     {/* End of Search Bar Modal */}
-                </nav>
+                </div>
             </nav>
 
             <div className="div-container">
                 {/* Title */}
-                <div className="title text-center mt-3 py-3">
+                <div className="title text-center py-3">
                     <h2 className="m-0">HomeMade</h2>
                     <p>DIY Decorating Ideas <br/> For Your Home</p>
                 </div>                           
