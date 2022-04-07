@@ -46,12 +46,19 @@
 
 body {
   padding-right: 0 !important;
+  background-color: #f6f6f6 !important;
 }
 
 /* --- Container --- */
 .div-container {
-  padding: 0px 20px;
-  background-color: #f6f6f6;
+  padding-top: 85px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.section-container {
+  margin: 0 auto;
+  max-width: 1200px;
 }
 
 /* --- Nav Bar --- */
@@ -76,7 +83,7 @@ nav {
 }
 
 .fa-magnifying-glass {
-  font-size: 12x;
+  font-size: 12px;
 }
 
 .modal-backdrop { 
@@ -116,6 +123,12 @@ input.search-input {
   height: 100px;
 }
 
+/* --- Results Page - Search Bar --- */
+.results-page>input.search-input {
+  background-color: #f6f6f6;
+  height: 70px;
+}
+
 /* remove select border */
 .form-select {
   border: none !important;
@@ -130,11 +143,7 @@ input.search-input {
   color: #fff;
 }
 
-/* --- Title --- */
-.title {
-  margin-top: 85px;
-}
-
+/* --- Home - Title --- */
 .title>h2{
   font-family: 'Comforter', cursive;
   font-size: 62px;
@@ -150,7 +159,7 @@ input.search-input {
   line-height: 1.4;
 }
 
-/* --- Banner --- */
+/* --- Home - Banner --- */
 .banner {
   height: 70vh;
   background-image: url("https://images.unsplash.com/photo-1618221381711-42ca8ab6e908?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1932&q=80");
@@ -164,8 +173,7 @@ input.search-input {
 
 .banner>div>p{
   font-family: 'PT Serif', serif;
-  font-size: 28px;
-  font-style: italic;
+  font-size: 26px;
   line-height: 1.2;
   letter-spacing: 1px;
 }
@@ -176,11 +184,11 @@ input.search-input {
   font-weight: bold;
 }
 
-/* --- Section Header --- */
+/* --- Home - Section Header --- */
 .section-header>h4{
   font-family: 'PT Serif', serif;
   font-size: 19px;
-  letter-spacing: 0.6px;
+  letter-spacing: 0.4px;
 }
 
 /* --- Card --- */
@@ -213,8 +221,71 @@ input.search-input {
   object-fit: cover !important;
 }
 
+.cards-container {
+  max-width: 1000px !important;
+}
+
+/* --- Search Results - Title --- */
+.search-summary>p {
+  margin: 0;
+  font-family: 'PT Serif', serif;
+  font-size: 22px;
+  letter-spacing: 0.4px;
+}
+
+.search-summary>p>span {
+  font-family: 'PT Serif', serif;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 28px !important;
+  letter-spacing: 0.4px;
+  color: #333333;
+}
+
+.search-summary>span {
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  line-height: 1.4;
+}
+
+/* --- View Page --- */
+.back>button>span {
+  font-family: 'Poppins', sans-serif;
+  color: #333333;
+  font-size: 16px;
+}
+
+.fa-arrow-left-long {
+  font-size: 16px;
+}
+
+.view-smalltext {
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.8px !important;
+  text-transform: uppercase;
+}
+
+.view-title {
+  font-family: 'PT Serif', serif;
+  font-size: 32px;
+  line-height: 1.2;
+  font-weight: bold;
+  letter-spacing: 0.6px;
+}
+
+.view-description {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px !important;
+  letter-spacing: 0.4px !important;
+}
+
+/* --- Media Query --- */
 @media screen and (min-width: 768px) {
   .project>div.img{
-    height: 300px;
+    height: 320px;
   }
 }

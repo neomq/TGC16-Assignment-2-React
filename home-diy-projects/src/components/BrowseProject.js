@@ -34,7 +34,11 @@ export default function BrowseProject (props) {
                         <div className="modal-dialog modal-dialog-centered modal-xl">
                             <div className="modal-content">
                                 <div className="row justify-content-end pt-4 pb-1 px-5">
-                                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <button type="button" className="btn-close"
+                                            data-bs-dismiss="modal"
+                                            aria-label="Close"
+                                            onClick={props.closeSearch}
+                                    ></button>
                                 </div>
                                 <div className="modal-body">
                                     {/* Search Bar */}
@@ -112,7 +116,7 @@ export default function BrowseProject (props) {
                                         </div>
 
                                         {/* Search Button */}
-                                        <div className="d-flex flex-column col-md-12 col-lg-3 mt-5">
+                                        <div className="d-flex flex-column col-md-12 col-lg-3 justify-content-end mt-5">
                                             <button type="button"
                                                 className="text btn-pri btn btn-dark rounded-0 p-2"
                                                 data-bs-dismiss="modal"
@@ -147,32 +151,34 @@ export default function BrowseProject (props) {
                         data-bs-target="#searchModal">SEARCH DECOR</button>
                     </div>
                 </div>
+                
+                <div className="section-container">
+                    {/* Section Header */}
+                    <div className="py-3 mt-3 section-header text-center">
+                        <h4 className="py-3 mb-0">- Latest Ideas & Inspirations -</h4>
+                    </div>
 
-                {/* Section Header */}
-                <div className="py-3 mt-3 section-header text-center">
-                    <h4 className="py-2 mb-0">- Latest Ideas & Inspirations -</h4>
-                </div>
-
-                {/* Cards */}
-                <div className="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-2">
-                    {props.all_data.map((p) => (
-                        <div className="col" key={p._id}>
-                            <div className="project card rounded-0 border-0 h-100"
-                                onClick={() => {
-                                    props.viewProject(p._id)
-                                    props.getComments(p._id)
-                                }}>
-                                <div className="img overflow-hidden">
-                                    <img src={p.photo} className="card-img-top rounded-0" alt="..." />
-                                </div>
-                                <div className="card-body overflow-auto">
-                                    <p className="text card-text text-muted">{p.category.join(' | ')}</p>
-                                    <h5 className="header card-title">{p.project_title}</h5>
-                                    <p className="text text-muted mb-1">by {p.user_name}</p>
+                    {/* Cards */}
+                    <div className="pb-3 row row-cols-2 row-cols-md-3 row-cols-lg-4 g-2">
+                        {props.all_data.map((p) => (
+                            <div className="col" key={p._id}>
+                                <div className="project card rounded-0 border-0 h-100"
+                                    onClick={() => {
+                                        props.viewProject(p._id)
+                                        props.getComments(p._id)
+                                    }}>
+                                    <div className="img overflow-hidden">
+                                        <img src={p.photo} className="card-img-top rounded-0" alt="..." />
+                                    </div>
+                                    <div className="card-body">
+                                        <p className="text card-text text-muted">{p.category.join(' | ')}</p>
+                                        <h5 className="header card-title">{p.project_title}</h5>
+                                        <p className="text text-muted mb-1">by {p.user_name}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
             </div>
         </React.Fragment>

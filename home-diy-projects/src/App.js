@@ -123,13 +123,18 @@ export default class App extends React.Component {
       }
     })
     // console.log(search_results.data)
+
     this.setState({
       search_data: search_results.data,
       active: "search_results",
       search: false,
       display_project: false,
-      project_data: {},
+      project_data: {}
+    })
+  }
 
+  closeSearch = () => {
+    this.setState({
       //reset search
       category: "",
       craft_type: "",
@@ -607,6 +612,7 @@ export default class App extends React.Component {
                 time_required={this.state.time_required}
                 difficulty={this.state.difficulty}
                 getSearch={this.getSearch}
+                closeSearch={this.closeSearch}
                 category_list={this.state.category_list}
                 craft_type_list={this.state.craft_type_list}/>
         </React.Fragment>
@@ -627,6 +633,7 @@ export default class App extends React.Component {
                   time_required={this.state.time_required}
                   difficulty={this.state.difficulty}
                   getSearch={this.getSearch}
+                  closeSearch={this.closeSearch}
                   updateFormField={this.updateFormField}
                   category_list={this.state.category_list}
                   craft_type_list={this.state.craft_type_list}/>
