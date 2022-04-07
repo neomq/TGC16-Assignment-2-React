@@ -180,6 +180,10 @@ export default function AddProject (props) {
                                 onChange={(e) => {
                                     props.updateSupplies(index, e.target.value)
                                 }} />
+                            <button type="button"
+                                    className="btn btn-outline-secondary px-2"
+                                    onClick={ () => {props.deleteSupply(index)} }
+                            >remove</button>
                         </div>
                     ))}
                 </div>
@@ -255,6 +259,10 @@ export default function AddProject (props) {
                                     props.updateInstructions(index, e.target.value)
                                 }}
                             />
+                            <button type="button"
+                                    className="btn btn-outline-secondary px-2"
+                                    onClick={ () => {props.deleteInstruction(index)} }
+                            >remove</button>
                         </div>
                     ))}
 

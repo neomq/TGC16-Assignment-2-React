@@ -76,7 +76,7 @@ nav {
 
 .text.btn-sec {
   font-family: 'Poppins', sans-serif;
-  color: #646464;
+  color: #333333;
   letter-spacing: 0.8px;
   font-weight: 500;
   font-size: 13px;
@@ -175,7 +175,7 @@ input.search-input {
   font-family: 'PT Serif', serif;
   font-size: 26px;
   line-height: 1.2;
-  letter-spacing: 1px;
+  letter-spacing: 0.8px;
 }
 
 .banner>div>p>span{
@@ -205,14 +205,14 @@ input.search-input {
 }
 
 .project>div>p {
-  font-size: 12px !important;
+  font-size: 11px !important;
   font-weight: 400 !important;
-  letter-spacing: 0.8px !important;
+  letter-spacing: 0.6px !important;
   text-transform: uppercase;
 }
 
 .project>div.img{
-  height: 260px;
+  height: 320px;
 }
 
 .project>div>img {
@@ -261,11 +261,21 @@ input.search-input {
   font-size: 16px;
 }
 
+.edit-delete>button {
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.8px !important;
+  text-transform: uppercase;
+  color: #646464;
+  
+}
+
 .view-smalltext {
   font-family: 'Poppins', sans-serif;
-  font-size: 12px !important;
+  font-size: 11px !important;
   font-weight: 400 !important;
-  letter-spacing: 0.8px !important;
+  letter-spacing: 0.6px !important;
   text-transform: uppercase;
 }
 
@@ -285,7 +295,5 @@ input.search-input {
 
 /* --- Media Query --- */
 @media screen and (min-width: 768px) {
-  .project>div.img{
-    height: 320px;
-  }
+
 }

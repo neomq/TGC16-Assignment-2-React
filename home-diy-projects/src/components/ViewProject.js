@@ -3,8 +3,11 @@ import React from 'react'
 export default function ViewProject (props) {
     return (
         <React.Fragment>
+            {props.goToTop()}
+
             {/* Nav Bar */}
             <nav className="navbar fixed-top justify-content-between py-3 border-bottom">
+                {/* Home Button */}
                 <div className="div">
                     <button type="button"
                             className="text btn-sec btn rounded-0 py-1 px-3"
@@ -12,6 +15,7 @@ export default function ViewProject (props) {
                     >HOME
                     </button>
                 </div>
+                {/* Submit / Search */}
                 <div className="div">
                     {/* Submit Button */}
                     <button type="button" className="text btn-sec btn rounded-0 py-1 px-3"
@@ -132,25 +136,25 @@ export default function ViewProject (props) {
 
             <div className="div-container">
                 {/* Edit / Delete */}
-                <div className="d-flex justify-content-end">
+                <div className="d-flex edit-delete justify-content-end">
                     {/* Edit Button */}
                     <button type="button"
-                        className="btn btn-outline-secondary "
+                        className="btn me-2"
                         onClick={props.editProject}
-                    ><i className="fa-solid fa-pen-to-square"></i>
+                    ><i className="fa-solid fa-pen-to-square px-1"></i>Edit
                     </button>
-
+                    <div className="vr"></div>
                     {/* Delete Button */}
                     <button type="button"
-                        className="btn btn-outline-secondary ms-2"
+                        className="btn ms-2"
                         onClick={props.deleteProject}
-                    ><i className="fa-solid fa-trash-can"></i>
-                    </button> 
+                    ><i className="fa-solid fa-trash-can px-1"></i>Delete
+                    </button>
                 </div>
 
                 {/* Main content section */}
                 {props.project_data.map((p) => (
-                        <div key={p._id}>
+                        <div className="mt-4" key={p._id}>
                             <p className="view-smalltext">{p.category.join(" , ")}</p>
                             <h2 className="view-title overflow-hidden">{p.project_title}</h2>
                             <p className="view-description">{p.description}</p>

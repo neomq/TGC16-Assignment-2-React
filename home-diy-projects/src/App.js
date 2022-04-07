@@ -363,6 +363,15 @@ export default class App extends React.Component {
     })
   }
 
+  deleteSupply = (index) => {
+    this.setState({
+      'new_supplies': [
+        ...this.state.new_supplies.slice(0, index),
+        ...this.state.new_supplies.slice(index+1)
+      ]
+    })
+  }
+
   updateSupplies = (index, newValue) => {
     this.setState({
       'new_supplies': [
@@ -378,6 +387,15 @@ export default class App extends React.Component {
       'new_instructions_text': [
         ...this.state.new_instructions_text.slice(0,index),
         newValue,
+        ...this.state.new_instructions_text.slice(index+1)
+      ]
+    })
+  }
+
+  deleteInstruction = (index) => {
+    this.setState({
+      'new_instructions_text': [
+        ...this.state.new_instructions_text.slice(0, index),
         ...this.state.new_instructions_text.slice(index+1)
       ]
     })
@@ -517,6 +535,13 @@ export default class App extends React.Component {
     })
   }
 
+  goToTop = () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+    })
+}
+
   renderContent(){
     if (this.state.add_form === true) {
       return (
@@ -546,8 +571,10 @@ export default class App extends React.Component {
                 addProject={this.addProject}
                 addNewSupplies={this.addNewSupplies}
                 updateSupplies={this.updateSupplies}
+                deleteSupply={this.deleteSupply}
                 addNewInstruction={this.addNewInstruction}
                 updateInstructions={this.updateInstructions}
+                deleteInstruction={this.deleteInstruction}
                 updateFormField={this.updateFormField}/>
         </React.Fragment>
       );
@@ -579,8 +606,10 @@ export default class App extends React.Component {
                     new_instructions_link={this.state.new_instructions_link}
                     addNewSupplies={this.addNewSupplies}
                     updateSupplies={this.updateSupplies}
+                    deleteSupply={this.deleteSupply}
                     addNewInstruction={this.addNewInstruction}
                     updateInstructions={this.updateInstructions}
+                    deleteInstruction={this.deleteInstruction}
                     updateFormField={this.updateFormField}/>
         </React.Fragment>
       );
@@ -614,7 +643,8 @@ export default class App extends React.Component {
                 getSearch={this.getSearch}
                 closeSearch={this.closeSearch}
                 category_list={this.state.category_list}
-                craft_type_list={this.state.craft_type_list}/>
+                craft_type_list={this.state.craft_type_list}
+                goToTop={this.goToTop}/>
         </React.Fragment>
       )
     }
@@ -636,7 +666,8 @@ export default class App extends React.Component {
                   closeSearch={this.closeSearch}
                   updateFormField={this.updateFormField}
                   category_list={this.state.category_list}
-                  craft_type_list={this.state.craft_type_list}/>
+                  craft_type_list={this.state.craft_type_list}
+                  goToTop={this.goToTop}/>
         </React.Fragment>
       );
     } else if (this.state.active === "search_results") {

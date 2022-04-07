@@ -4,6 +4,8 @@ export default function BrowseProject (props) {
 
     return (
         <React.Fragment>
+            {props.goToTop()}
+
             {/* Nav Bar */}
             <nav className="navbar fixed-top justify-content-between py-3 border-bottom">
                 <div className="div">
@@ -145,10 +147,10 @@ export default function BrowseProject (props) {
                 {/* Banner */}
                 <div className="banner position-relative">
                     <div className="position-absolute top-50 start-50 translate-middle text-center py-5 w-75">
-                        <p className="pt-0 p-4 m-0">Elevate the look of your humble abode with <span>Art & Decor</span> as unique as you</p>
-                        <button type="button" className="text btn-pri btn btn-dark rounded-0 px-5 py-2"
+                        <p className="pt-0 p-4 m-0">Elevate the look of your humble abode with <span>Art & Decor</span> as unique as you.</p>
+                        <button type="button" className="text btn-pri btn btn-dark rounded-0 px-4 px-md-5 py-2"
                         data-bs-toggle="modal"
-                        data-bs-target="#searchModal">SEARCH DECOR</button>
+                        data-bs-target="#searchModal">SEARCH DECOR CRAFTS</button>
                     </div>
                 </div>
                 

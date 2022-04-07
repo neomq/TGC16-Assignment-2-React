@@ -178,6 +178,10 @@ export default function EditProject (props) {
                             onChange={(e) => {
                                 props.updateSupplies(index, e.target.value)
                             }} />
+                        <button type="button"
+                                    className="btn btn-outline-secondary px-2"
+                                    onClick={ () => {props.deleteSupply(index)} }
+                        >remove</button>
                     </div>
                 ))}
             </div>
