@@ -24,7 +24,7 @@ export default class App extends React.Component {
     comments_data: [],
 
     // page display
-    active: "browse",
+    active: "home",
     add_form: false,
     edit_form: false,
     display_project: false,
@@ -126,7 +126,7 @@ export default class App extends React.Component {
 
     this.setState({
       search_data: search_results.data,
-      active: "search_results",
+      active: "search results",
       search: false,
       display_project: false,
       project_data: {}
@@ -208,7 +208,7 @@ export default class App extends React.Component {
     let new_data = await axios.get(BASE_URL + "/projects")
     this.setState({
       add_form: false,
-      active: "browse",
+      active: "home",
       all_data: new_data.data
     })
   }
@@ -619,6 +619,7 @@ export default class App extends React.Component {
       return (
         <React.Fragment>
           <ViewProject setActive={this.setActive}
+                active={this.state.active}
                 displayAddForm={this.displayAddForm}
                 displayProject={this.displayProject}
                 project_data={this.state.project_data}
@@ -649,7 +650,7 @@ export default class App extends React.Component {
       )
     }
 
-    if (this.state.active === "browse") {
+    if (this.state.active === "home") {
       return (
         <React.Fragment>
           <BrowseProject setActive={this.setActive}
@@ -670,7 +671,7 @@ export default class App extends React.Component {
                   goToTop={this.goToTop}/>
         </React.Fragment>
       );
-    } else if (this.state.active === "search_results") {
+    } else if (this.state.active === "search results") {
       return (
         <React.Fragment>
           <SearchResults setActive={this.setActive}
