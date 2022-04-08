@@ -134,8 +134,15 @@ export default function SearchResults (props) {
                         {/* End of Search Bar Modal */}
                     </div>
                 </nav>
-                
+
                 <div className="div-container">
+                    {/* Title */}
+                    <div className="title text-center py-3">
+                        <h2 className="m-0">HomeMade</h2>
+                        <p>DIY Decorating Ideas <br /> For Your Home</p>
+                    </div>
+
+                    {/* Search Results Section */}
                     <div className="section-container">
                         <div className="search-summary text-center py-2">
                             <p>Search Results for:</p>
