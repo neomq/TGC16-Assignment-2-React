@@ -108,7 +108,7 @@ export default function ViewProject (props) {
                                                     onChange={props.updateFormField}>
                                                     <option value="">Difficulty</option>
                                                     <option value="easy">Easy</option>
-                                                    <option value="normal">Normal</option>
+                                                    <option value="intermediate">Intermediate</option>
                                                     <option value="challenging">Challenging</option>
                                                 </select>
                                             </div>
@@ -177,13 +177,13 @@ export default function ViewProject (props) {
                     {/* Project details */}
                     {props.project_data.map((p) => (
                         <div className="mt-4" key={p._id}>
-                            <div className="mb-5">
+                            <div className="mb-4 mb-md-5">
                                 <p className="view-smalltext">{p.category.join(" , ")}</p>
                                 <h2 className="view-title overflow-hidden">{p.project_title}</h2>
                                 <p className="view-bodytext">{p.description}</p>
                                 <p className="view-smalltext py-2">By {p.user_name} / {p.date_of_post.toString().split('T')[0]}</p>
                                 <span className="view-smalltext badge rounded-pill bg-light text-dark p-2">{p.time_required} mins</span>
-                                <span className="view-smalltext badge rounded-pill bg-light text-dark p-2 ms-2">{p.difficulty} difficulty</span>
+                                <span className="view-smalltext badge rounded-pill bg-light text-dark p-2 ms-2">{p.difficulty}</span>
                             </div>
                             
                             <hr className="opacity-25"/>

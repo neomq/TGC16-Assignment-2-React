@@ -81,7 +81,11 @@ export default class App extends React.Component {
     this.setState({
       active: page,
       add_form: false,
-      display_project: false
+      display_project: false,
+
+      // reset search
+      search_word: "",
+      search_data: []
     })
   }
 
@@ -190,51 +194,54 @@ export default class App extends React.Component {
       category.push(this.state.new_category_3)
     }
 
-    // Validation
+    // Form validation
     let errorMessage = {}
     
     if (!this.state.new_user_name){
-      errorMessage.name_error = "Please enter a name"
+      errorMessage.name_error = "Please enter a name."
     } else if (this.state.new_user_name.length < 2){
-      errorMessage.name_error = "Name must be at least 2 characters long"
+      errorMessage.name_error = "Name must be at least 2 characters long."
     }
     if (!this.state.new_project_title){
-      errorMessage.title_error = "Please enter a project title"
+      errorMessage.title_error = "Please enter a project title."
     } else if (this.state.new_project_title.length < 3) (
-      errorMessage.title_error = "Title must be at least 3 characters long"
+      errorMessage.title_error = "Title must be at least 3 characters long."
     )
     if (!this.state.new_photo){
-      errorMessage.image_error = "Please insert a link to your image"
+      errorMessage.image_error = "Please insert a link to your image."
     }
     if (!this.state.new_description){
-      errorMessage.description_error = "Please enter a description"
+      errorMessage.description_error = "Please enter a description."
+    } else if (this.state.new_description.length < 5){
+      errorMessage.description_error = "Description must be at least 5 characters long."
     } else if (this.state.new_description.length > 150){
-      errorMessage.description_error = "Character limit reached"
+      errorMessage.description_error = "Character limit reached."
     }
     if (category.length === 0){
-      errorMessage.category_error = "Please select at least one category"
+      errorMessage.category_error = "Please select at least one category."
     }
     if (craft_type.length === 0){
-      errorMessage.craft_type_error = "Please select at least one craft type"
+      errorMessage.craft_type_error = "Please select at least one craft type."
     }
     if (this.state.new_supplies.length === 0){
-      errorMessage.supplies_error = "Please enter at least one item"
+      errorMessage.supplies_error = "Please enter at least one item."
     }
     if (!this.state.new_time_required){
-      errorMessage.time_error = "Please enter the time required (in mins)"
+      errorMessage.time_error = "Please enter the time required (in mins)."
     } else if (isNaN(this.state.new_time_required) === true) {
-      errorMessage.time_error = "Time must be a number"
+      errorMessage.time_error = "Time must be a number."
     } else if (this.state.new_time_required <= 0) {
-      errorMessage.time_error = "Time must be more than 0 mins"
+      errorMessage.time_error = "Time must be more than 0 mins."
     }
     if (!this.state.new_difficulty){
-      errorMessage.difficulty_error = "Please select a difficulty level"
+      errorMessage.difficulty_error = "Please select a difficulty level."
     }
     if (this.state.new_instructions_text.length === 0){
-      errorMessage.instructions_error = "Please enter at least one instruction"
+      errorMessage.instructions_error = "Please enter at least one step."
     }
 
     if (Object.keys(errorMessage).length > 0){
+      errorMessage.form_error = "One or more fields have an error. Please check and try again."
       this.setState({
         error_message: errorMessage
       })
@@ -262,7 +269,11 @@ export default class App extends React.Component {
       this.setState({
         add_form: false,
         active: "home",
-        all_data: new_data.data
+        display_project: "false",
+        all_data: new_data.data,
+
+        // clear error message (if any)
+        error_message: {}
       })
     }
   }
@@ -319,49 +330,106 @@ export default class App extends React.Component {
     if (this.state.new_category_3) {
       category.push(this.state.new_category_3)
     }
+
+    // Form validation
+    let errorMessage = {}
     
-    let data_to_update = {
-      project_title: this.state.new_project_title,
-      user_name: this.state.new_user_name,
-      photo: this.state.new_photo,
-      description: this.state.new_description,
-      supplies: this.state.new_supplies,
-      craft_type: craft_type,
-      category: category,
-      time_required: this.state.new_time_required,
-      difficulty: this.state.new_difficulty,
-      text: this.state.new_instructions_text,
-      link: this.state.new_instructions_link
+    if (!this.state.new_user_name){
+      errorMessage.name_error = "Please enter a name."
+    } else if (this.state.new_user_name.length < 2){
+      errorMessage.name_error = "Name must be at least 2 characters long."
+    }
+    if (!this.state.new_project_title){
+      errorMessage.title_error = "Please enter a project title."
+    } else if (this.state.new_project_title.length < 3) (
+      errorMessage.title_error = "Title must be at least 3 characters long."
+    )
+    if (!this.state.new_photo){
+      errorMessage.image_error = "Please insert a link to your image."
+    }
+    if (!this.state.new_description){
+      errorMessage.description_error = "Please enter a description."
+    } else if (this.state.new_description.length < 5){
+      errorMessage.description_error = "Description must be at least 5 characters long."
+    } else if (this.state.new_description.length > 150){
+      errorMessage.description_error = "Character limit reached."
+    }
+    if (category.length === 0){
+      errorMessage.category_error = "Please select at least one category."
+    }
+    if (craft_type.length === 0){
+      errorMessage.craft_type_error = "Please select at least one craft type."
+    }
+    if (this.state.new_supplies.length === 0){
+      errorMessage.supplies_error = "Please enter at least one item."
+    }
+    if (!this.state.new_time_required){
+      errorMessage.time_error = "Please enter the time required (in mins)."
+    } else if (isNaN(this.state.new_time_required) === true) {
+      errorMessage.time_error = "Time must be a number."
+    } else if (this.state.new_time_required <= 0) {
+      errorMessage.time_error = "Time must be more than 0 mins."
+    }
+    if (!this.state.new_difficulty){
+      errorMessage.difficulty_error = "Please select a difficulty level."
+    }
+    if (this.state.new_instructions_text.length === 0){
+      errorMessage.instructions_error = "Please enter at least one step."
     }
 
-    // update project
-    let project_id = "/" + this.state.projectId_to_update
-    let update_project = await axios.put(BASE_URL + "/projects" + project_id, data_to_update)
-    console.log(update_project.data)
-
-    // display updated project on page
-    let updated_project = await axios.get(BASE_URL + "/projects" + project_id)
-
-    // display updated data on main page
-    let new_data = await axios.get(BASE_URL + "/projects")
-
-    // display updated data on search results page
-    let search_results = await axios.get(BASE_URL + "/projects_search", {
-      params: {
-        'search_word': this.state.search_word,
-        'category': this.state.category,
-        'craft_type': this.state.craft_type,
-        'time_required': this.state.time_required,
-        'difficulty': this.state.difficulty
+    if (Object.keys(errorMessage).length > 0){
+      errorMessage.form_error = "One or more fields have an error. Please check and try again."
+      this.setState({
+        error_message: errorMessage
+      })
+    } else {
+      // proceed to update data
+      let data_to_update = {
+        project_title: this.state.new_project_title,
+        user_name: this.state.new_user_name,
+        photo: this.state.new_photo,
+        description: this.state.new_description,
+        supplies: this.state.new_supplies,
+        craft_type: craft_type,
+        category: category,
+        time_required: this.state.new_time_required,
+        difficulty: this.state.new_difficulty,
+        text: this.state.new_instructions_text,
+        link: this.state.new_instructions_link
       }
-    })
 
-    this.setState({
-      edit_form: false,
-      project_data: updated_project.data,
-      all_data: new_data.data,
-      search_data: search_results.data
-    })
+      // update project
+      let project_id = "/" + this.state.projectId_to_update
+      let update_project = await axios.put(BASE_URL + "/projects" + project_id, data_to_update)
+      console.log(update_project.data)
+
+      // display updated project on page
+      let updated_project = await axios.get(BASE_URL + "/projects" + project_id)
+
+      // display updated data on main page
+      let new_data = await axios.get(BASE_URL + "/projects")
+
+      // display updated data on search results page
+      let search_results = await axios.get(BASE_URL + "/projects_search", {
+        params: {
+          'search_word': this.state.search_word,
+          'category': this.state.category,
+          'craft_type': this.state.craft_type,
+          'time_required': this.state.time_required,
+          'difficulty': this.state.difficulty
+        }
+      })
+
+      this.setState({
+        edit_form: false,
+        project_data: updated_project.data,
+        all_data: new_data.data,
+        search_data: search_results.data,
+
+        // clear error message (if any)
+        error_message: {}
+      })
+    }
   }
 
   deleteProject = async () => {
@@ -460,6 +528,7 @@ export default class App extends React.Component {
   cancelAdd = () => {
     this.setState({
       add_form: false,
+      error_message: {}
     })
     this.setState(this.resetFormField)
   }
@@ -467,7 +536,8 @@ export default class App extends React.Component {
   cancelEdit = () => {
     this.setState({
       edit_form: false,
-      projectId_to_update: ""
+      projectId_to_update: "",
+      error_message: {}
     })
     this.setState(this.resetFormField)
   }
@@ -636,6 +706,7 @@ export default class App extends React.Component {
                     addNewInstruction={this.addNewInstruction}
                     updateInstructions={this.updateInstructions}
                     deleteInstruction={this.deleteInstruction}
+                    error_message={this.state.error_message}
                     updateFormField={this.updateFormField}/>
         </React.Fragment>
       );

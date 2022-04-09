@@ -112,7 +112,7 @@ export default function BrowseProject (props) {
                                                         onChange={props.updateFormField}>
                                                         <option value="">Difficulty</option>
                                                         <option value="easy">Easy</option>
-                                                        <option value="normal">Normal</option>
+                                                        <option value="intermediate">Intermediate</option>
                                                         <option value="challenging">Challenging</option>
                                                     </select>
                                                 </div>
@@ -151,7 +151,7 @@ export default function BrowseProject (props) {
                             <p className="pt-0 p-4 m-0">Elevate the look of your humble abode with <span>Art & Decor</span> as unique as you.</p>
                             <button type="button" className="text btn-pri btn btn-dark rounded-0 px-4 px-md-5 py-2"
                             data-bs-toggle="modal"
-                            data-bs-target="#searchModal">SEARCH DECOR CRAFTS</button>
+                            data-bs-target="#searchModal">SEARCH DECOR IDEAS</button>
                         </div>
                     </div>
                     
