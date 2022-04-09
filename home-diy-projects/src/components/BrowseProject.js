@@ -43,12 +43,12 @@ export default function BrowseProject (props) {
                                                 onClick={props.closeSearch}
                                         ></button>
                                     </div>
-                                    <div className="modal-body">
+                                    <div className="modal-body pt-0">
                                         {/* Search Bar */}
-                                        <div className="col-12 mt-1 px-3 pt-2 pb-5">
+                                        <div className="col-12 px-3 pt-0 pb-5">
                                             {/* Search Input */}
                                             <div className="input-group input-group-lg border-bottom">
-                                                <input className="search-input form-control border-0 text-wrap"
+                                                <input className="search-input form-control pt-0 border-0 text-wrap"
                                                     name="search_word"
                                                     type="text"
                                                     value={props.search_word}

@@ -16,7 +16,7 @@ export default function AddProject (props) {
                         <p>DIY Decorating Ideas <br /> For Your Home</p>
                     </div>
 
-                    <h3 className="form-header text-center mb-5">Share your Home Decorating Project</h3>
+                    <h3 className="form-header text-center mb-5">Share a Home Decorating Idea</h3>
                     <hr/>
                     <form>
                         {/* Details - Title */}
@@ -37,7 +37,7 @@ export default function AddProject (props) {
 
                         {/* Details - Image */}
                         <div className="mt-4">
-                            <h6 className="form-title">2. Image of artwork</h6>
+                            <h6 className="form-title">2. Image of Decor</h6>
                             <input className="form-control add-form my-2 rounded-0 bg-transparent"
                                 name="new_photo"
                                 type="text"

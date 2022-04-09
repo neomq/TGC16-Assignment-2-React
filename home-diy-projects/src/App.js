@@ -9,10 +9,9 @@ import AddProject from './components/AddProject.js'
 import EditProject from './components/EditProject.js'
 import ViewProject from './components/ViewProject.js'
 
-// const BASE_URL = "https://home-diy-ideas.herokuapp.com";
-
+const BASE_URL = "https://home-diy-projects.herokuapp.com";
 // for testing
-const BASE_URL = "https://3000-neomq-tgc16assignment-x26hedur85s.ws-us39.gitpod.io";
+// const BASE_URL = "https://3000-neomq-tgc16assignment-x26hedur85s.ws-us39.gitpod.io";
 
 export default class App extends React.Component {
 
