@@ -12,7 +12,7 @@ import ViewProject from './components/ViewProject.js'
 // const BASE_URL = "https://home-diy-ideas.herokuapp.com";
 
 // for testing
-const BASE_URL = "https://3000-neomq-tgc16assignment-x26hedur85s.ws-us38.gitpod.io";
+const BASE_URL = "https://3000-neomq-tgc16assignment-x26hedur85s.ws-us39.gitpod.io";
 
 export default class App extends React.Component {
 
@@ -59,6 +59,9 @@ export default class App extends React.Component {
     new_instructions_text_added: "",
     new_instructions_link: "",
     projectId_to_update: "",
+
+    // validation
+    error_message: {},
 
     // create and update comments
     new_comment_name: "",
@@ -165,52 +168,103 @@ export default class App extends React.Component {
   }
 
   addProject = async () => {
-    let craft_type = ""
+    let craft_type = []
     if (this.state.new_craft_type_1) {
-      craft_type += this.state.new_craft_type_1
+      craft_type.push(this.state.new_craft_type_1)
     }
     if (this.state.new_craft_type_2) {
-      craft_type += "," + this.state.new_craft_type_2
+      craft_type.push(this.state.new_craft_type_2)
     }
     if (this.state.new_craft_type_3) {
-      craft_type += "," + this.state.new_craft_type_3
+      craft_type.push(this.state.new_craft_type_3)
     }
 
-    let category = ""
+    let category = []
     if (this.state.new_category_1) {
-      category += this.state.new_category_1
+      category.push(this.state.new_category_1)
     }
     if (this.state.new_category_2) {
-      category += "," + this.state.new_category_2
+      category.push(this.state.new_category_2)
     }
     if (this.state.new_category_3) {
-      category += "," + this.state.new_category_3
+      category.push(this.state.new_category_3)
     }
 
-    let data = {
-      project_title: this.state.new_project_title,
-      user_name: this.state.new_user_name,
-      photo: this.state.new_photo,
-      description: this.state.new_description,
-      supplies: this.state.new_supplies,
-      craft_type: craft_type,
-      category: category,
-      time_required: this.state.new_time_required,
-      difficulty: this.state.new_difficulty,
-      text: this.state.new_instructions_text,
-      link: this.state.new_instructions_link
-    }
+    // Validation
+    let errorMessage = {}
     
-    let data_to_add = await axios.post(BASE_URL + "/projects", data)
-    console.log(data_to_add.data)
+    if (!this.state.new_user_name){
+      errorMessage.name_error = "Please enter a name"
+    } else if (this.state.new_user_name.length < 2){
+      errorMessage.name_error = "Name must be at least 2 characters long"
+    }
+    if (!this.state.new_project_title){
+      errorMessage.title_error = "Please enter a project title"
+    } else if (this.state.new_project_title.length < 3) (
+      errorMessage.title_error = "Title must be at least 3 characters long"
+    )
+    if (!this.state.new_photo){
+      errorMessage.image_error = "Please insert a link to your image"
+    }
+    if (!this.state.new_description){
+      errorMessage.description_error = "Please enter a description"
+    } else if (this.state.new_description.length > 150){
+      errorMessage.description_error = "Character limit reached"
+    }
+    if (category.length === 0){
+      errorMessage.category_error = "Please select at least one category"
+    }
+    if (craft_type.length === 0){
+      errorMessage.craft_type_error = "Please select at least one craft type"
+    }
+    if (this.state.new_supplies.length === 0){
+      errorMessage.supplies_error = "Please enter at least one item"
+    }
+    if (!this.state.new_time_required){
+      errorMessage.time_error = "Please enter the time required (in mins)"
+    } else if (isNaN(this.state.new_time_required) === true) {
+      errorMessage.time_error = "Time must be a number"
+    } else if (this.state.new_time_required <= 0) {
+      errorMessage.time_error = "Time must be more than 0 mins"
+    }
+    if (!this.state.new_difficulty){
+      errorMessage.difficulty_error = "Please select a difficulty level"
+    }
+    if (this.state.new_instructions_text.length === 0){
+      errorMessage.instructions_error = "Please enter at least one instruction"
+    }
 
-    // display updated set of data on main page
-    let new_data = await axios.get(BASE_URL + "/projects")
-    this.setState({
-      add_form: false,
-      active: "home",
-      all_data: new_data.data
-    })
+    if (Object.keys(errorMessage).length > 0){
+      this.setState({
+        error_message: errorMessage
+      })
+    } else {
+      // proceed to add data
+      let data = {
+        project_title: this.state.new_project_title,
+        user_name: this.state.new_user_name,
+        photo: this.state.new_photo,
+        description: this.state.new_description,
+        supplies: this.state.new_supplies,
+        craft_type: craft_type,
+        category: category,
+        time_required: this.state.new_time_required,
+        difficulty: this.state.new_difficulty,
+        text: this.state.new_instructions_text,
+        link: this.state.new_instructions_link
+      }
+
+      let data_to_add = await axios.post(BASE_URL + "/projects", data)
+      console.log(data_to_add.data)
+
+      // display updated set of data on main page
+      let new_data = await axios.get(BASE_URL + "/projects")
+      this.setState({
+        add_form: false,
+        active: "home",
+        all_data: new_data.data
+      })
+    }
   }
 
   editProject = () => {
@@ -244,26 +298,26 @@ export default class App extends React.Component {
   }
 
   updateProject = async () => {
-    let craft_type = ""
+    let craft_type = []
     if (this.state.new_craft_type_1) {
-      craft_type += this.state.new_craft_type_1
+      craft_type.push(this.state.new_craft_type_1)
     }
     if (this.state.new_craft_type_2) {
-      craft_type += "," + this.state.new_craft_type_2
+      craft_type.push(this.state.new_craft_type_2)
     }
     if (this.state.new_craft_type_3) {
-      craft_type += "," + this.state.new_craft_type_3
+      craft_type.push(this.state.new_craft_type_3)
     }
 
-    let category = ""
+    let category = []
     if (this.state.new_category_1) {
-      category += this.state.new_category_1
+      category.push(this.state.new_category_1)
     }
     if (this.state.new_category_2) {
-      category += "," + this.state.new_category_2
+      category.push(this.state.new_category_2)
     }
     if (this.state.new_category_3) {
-      category += "," + this.state.new_category_3
+      category.push(this.state.new_category_3)
     }
     
     let data_to_update = {
@@ -326,27 +380,29 @@ export default class App extends React.Component {
     })
   }
 
+  resetFormField = {
+    new_user_name: "",
+    new_project_title: "",
+    new_photo: "",
+    new_description: "",
+    new_category_1: "",
+    new_category_2: "",
+    new_category_3: "",
+    new_craft_type_1: "",
+    new_craft_type_2: "",
+    new_craft_type_3: "",
+    new_supplies: [],
+    new_time_required: "",
+    new_difficulty: "",
+    new_instructions_text: [],
+    new_instructions_link: ""
+  }
+
   displayAddForm = () => {
     this.setState({
       add_form: true,
-
-      // reset form fields
-      new_user_name: "",
-      new_project_title: "",
-      new_photo: "",
-      new_description: "",
-      new_category_1: "",
-      new_category_2: "",
-      new_category_3: "",
-      new_craft_type_1: "",
-      new_craft_type_2: "",
-      new_craft_type_3: "",
-      new_supplies: [],
-      new_time_required: "",
-      new_difficulty: "",
-      new_instructions_text: [],
-      new_instructions_link: ""
     })
+    this.setState(this.resetFormField)
   }
 
   addNewSupplies = () => {
@@ -404,48 +460,16 @@ export default class App extends React.Component {
   cancelAdd = () => {
     this.setState({
       add_form: false,
-
-      // reset form fields
-      new_user_name: "",
-      new_project_title: "",
-      new_photo: "",
-      new_description: "",
-      new_category_1: "",
-      new_category_2: "",
-      new_category_3: "",
-      new_craft_type_1: "",
-      new_craft_type_2: "",
-      new_craft_type_3: "",
-      new_supplies: [],
-      new_time_required: "",
-      new_difficulty: "",
-      new_instructions_text: [],
-      new_instructions_link: ""
     })
+    this.setState(this.resetFormField)
   }
 
   cancelEdit = () => {
     this.setState({
       edit_form: false,
-
-      // reset form fields to empty state
-      new_user_name: "",
-      new_project_title: "",
-      new_photo: "",
-      new_description: "",
-      new_category_1: "",
-      new_category_2: "",
-      new_category_3: "",
-      new_craft_type_1: "",
-      new_craft_type_2: "",
-      new_craft_type_3: "",
-      new_supplies: [],
-      new_time_required: "",
-      new_difficulty: "",
-      new_instructions_text: [],
-      new_instructions_link: "",
       projectId_to_update: ""
     })
+    this.setState(this.resetFormField)
   }
 
   getComments = async (id) => {
@@ -549,6 +573,7 @@ export default class App extends React.Component {
           <AddProject setActive={this.setActive}
                 cancelAdd={this.cancelAdd}
                 resetForm={this.resetForm}
+                onSubmit={this.onSubmit}
                 new_user_name={this.state.new_user_name}
                 new_project_title={this.state.new_project_title}
                 new_photo={this.state.new_photo}
@@ -575,6 +600,7 @@ export default class App extends React.Component {
                 addNewInstruction={this.addNewInstruction}
                 updateInstructions={this.updateInstructions}
                 deleteInstruction={this.deleteInstruction}
+                error_message={this.state.error_message}
                 updateFormField={this.updateFormField}/>
         </React.Fragment>
       );

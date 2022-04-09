@@ -61,6 +61,12 @@ body {
   padding-right: 20px;
 }
 
+.form-container {
+  padding-top: 25px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
 .section-container {
   margin: 0 auto;
   max-width: 1200px;
@@ -316,9 +322,6 @@ input.search-input {
 
 .comments>h4 {
   font-family: 'PT Serif', serif;
-  /* font-size: 26px; */
-  line-height: 1.2;
-  /* font-weight: bold; */
   letter-spacing: 0.4px;
 }
 
@@ -327,7 +330,6 @@ input.search-input {
   font-family: 'Poppins', sans-serif;
   font-size: 14px !important;
   letter-spacing: 0.4px !important;
-  /* color: #646464; */
   font-weight: 300;
 }
 
@@ -347,6 +349,28 @@ input.search-input {
   font-family: 'Poppins', sans-serif;
   font-size: 15px !important;
   color: #333333;
+}
+
+/* --- View Page - Modal --- */
+.delete-modal>p {
+  font-family: 'PT Serif', serif;
+  font-weight: 400;
+  font-size: 20px !important;
+  letter-spacing: 0.3px !important;
+  color: #333333;
+}
+
+.delete-modal>p>span {
+  font-family: 'PT Serif', serif;
+  font-weight: bold;
+  font-size: 20px !important;
+  letter-spacing: 0.3px !important;
+  color: #333333;
+}
+
+.edit-modal>div>h4 {
+  font-family: 'PT Serif', serif;
+  letter-spacing: 0.4px;
 }
 
 /* --- Media Query --- */

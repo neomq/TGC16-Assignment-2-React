@@ -160,13 +160,13 @@ export default function ViewProject (props) {
                         {/* Delete Modal */}
                         <div className="modal fade" id="deleteModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div className="modal-dialog modal-dialog-centered">
-                                <div className="modal-content">
-                                    <div className="modal-body">
-                                        Are you sure you want to delete {props.project_data[0].project_title}?
+                                <div className="modal-content p-3">
+                                    <div className="delete-modal modal-body">
+                                        <p>Are you sure you want to delete <span>{props.project_data[0].project_title}?</span></p>
                                     </div>
-                                    <div className="modal-footer">
-                                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">No, Cancel</button>
-                                        <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={props.deleteProject}>Yes, Delete</button>
+                                    <div className="modal-footer border-0">
+                                        <button type="button" className="text btn-pri btn btn-dark rounded-0" data-bs-dismiss="modal">No, Cancel</button>
+                                        <button type="button" className="text btn-sec btn btn-outline-dark rounded-0" data-bs-dismiss="modal" onClick={props.deleteProject}>Yes, Delete</button>
                                     </div>
                                 </div>
                             </div>
@@ -303,40 +303,35 @@ export default function ViewProject (props) {
                                 {/* Modal to edit comments */}
                                 <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                     <div className="modal-dialog modal-dialog-centered">
-                                        <div className="modal-content">
-                                            <div className="modal-header">
-                                                <h5 className="modal-title" id="staticBackdropLabel">Edit Comment</h5>
+                                        <div className="modal-content edit-modal p-3">
+                                            <div className="modal-header border-0">
+                                                <h4 className="modal-title" id="staticBackdropLabel">Edit Comment</h4>
                                             </div>
-                                            <div className="modal-body">
-                                                <form>
+                                            <div className="comments modal-body px-3 py-0">
                                                     <div className="mb-3">
-                                                        <label htmlFor="name" className="col-form-label">Name</label>
                                                         <input type="text"
-                                                            id="name"
-                                                            className="form-control"
+                                                            className="form-control rounded-0"
                                                             name="update_comment_name"
                                                             value={props.update_comment_name}
                                                             onChange={props.updateFormField}
-                                                            placeholder="Your name" />
+                                                            placeholder="Name"
+                                                            autoComplete="off"/>
                                                     </div>
                                                     <div className="mb-3">
-                                                        <label htmlFor="message" className="col-form-label">Comment</label>
-                                                        <textarea className="form-control"
-                                                            id="message"
+                                                        <textarea className="form-control rounded-0"
                                                             name="update_comment_text"
                                                             value={props.update_comment_text}
                                                             onChange={props.updateFormField}
-                                                            placeholder="Your comments" />
+                                                            placeholder="Message"/>
                                                     </div>
-                                                </form>
                                             </div>
-                                            <div className="modal-footer">
-                                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                            <div className="modal-footer border-0">
+                                                <button type="button" className="text btn-pri btn btn-outline-dark rounded-0" data-bs-dismiss="modal">CANCEL</button>
                                                 <button type="button"
-                                                    className="btn btn-primary"
+                                                    className="text btn-pri btn btn-dark rounded-0"
                                                     data-bs-dismiss="modal"
                                                     onClick={props.updateComment}
-                                                >Update
+                                                >UPDATE
                                                 </button>
                                             </div>
                                         </div>
