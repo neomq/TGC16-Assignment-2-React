@@ -274,6 +274,7 @@ export default class App extends React.Component {
         // clear error message (if any)
         error_message: {}
       })
+      this.setState(this.resetFormField)
     }
   }
 
@@ -428,6 +429,7 @@ export default class App extends React.Component {
         // clear error message (if any)
         error_message: {}
       })
+      this.setState(this.resetFormField)
     }
   }
 
@@ -459,10 +461,13 @@ export default class App extends React.Component {
     new_craft_type_2: "",
     new_craft_type_3: "",
     new_supplies: [],
+    new_supplies_added: "",
     new_time_required: "",
     new_difficulty: "",
     new_instructions_text: [],
-    new_instructions_link: ""
+    new_instructions_text_added: "",
+    new_instructions_link: "",
+    projectId_to_update: ""
   }
 
   displayAddForm = () => {
@@ -535,7 +540,6 @@ export default class App extends React.Component {
   cancelEdit = () => {
     this.setState({
       edit_form: false,
-      projectId_to_update: "",
       error_message: {}
     })
     this.setState(this.resetFormField)

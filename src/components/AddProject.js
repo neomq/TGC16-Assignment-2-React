@@ -239,7 +239,7 @@ export default function AddProject (props) {
                                         <button type="button"
                                                 className="btn pt-3 px-2"
                                                 onClick={ () => {props.deleteSupply(index)} }
-                                        ><i className="fa-solid fa-circle-minus fs-4"></i></button>
+                                        ><i className="fa-solid fa-circle-minus fs-4 opacity-50"></i></button>
                                     </div>
                                 ))}
                         
@@ -257,7 +257,7 @@ export default function AddProject (props) {
                                     placeholder="Write your step here"
                                 />
                                 <button type="button"
-                                    className="btn pt-2 px-2"
+                                    className="btn pt-1 px-2"
                                     onClick={() => { props.addNewInstruction() }}
                                 ><i className="fa-solid fa-circle-plus fs-4"></i></button>
                             </div>
@@ -274,9 +274,9 @@ export default function AddProject (props) {
                                         }}
                                     />
                                     <button type="button"
-                                            className="btn pt-2 px-2"
+                                            className="btn pt-1 px-2"
                                             onClick={ () => {props.deleteInstruction(index)} }
-                                    ><i className="fa-solid fa-circle-minus fs-4"></i></button>
+                                    ><i className="fa-solid fa-circle-minus fs-4 opacity-50"></i></button>
                                 </div>
                             ))}
                         </div>
