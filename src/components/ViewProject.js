@@ -224,10 +224,10 @@ export default function ViewProject (props) {
                                     <div className="d-flex edit-delete-back mt-5 mb-5 mb-md-4">
                                         {/* Back Button */}
                                         <button type="button"
-                                            className="btn p-0"
+                                            className="btn d-flex p-0 m-0 align-items-center"
                                             onClick={() => { props.displayProject(false) }}
                                         ><i className="fa-solid fa-chevron-left pe-2"></i>
-                                            Back to {props.active}
+                                        <span>Back to {props.active}</span>
                                         </button>
                                     </div>
                                 </div>
@@ -310,7 +310,7 @@ export default function ViewProject (props) {
                                             <div className="comments modal-body px-3 py-0">
                                                     <div className="mb-3">
                                                         <input type="text"
-                                                            className="form-control rounded-0"
+                                                            className="form-control rounded-0 bg-transparent"
                                                             name="update_comment_name"
                                                             value={props.update_comment_name}
                                                             onChange={props.updateFormField}
@@ -318,7 +318,7 @@ export default function ViewProject (props) {
                                                             autoComplete="off"/>
                                                     </div>
                                                     <div className="mb-3">
-                                                        <textarea className="form-control rounded-0"
+                                                        <textarea className="form-control rounded-0 bg-transparent"
                                                             name="update_comment_text"
                                                             value={props.update_comment_text}
                                                             onChange={props.updateFormField}

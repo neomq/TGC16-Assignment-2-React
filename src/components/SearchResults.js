@@ -45,7 +45,7 @@ export default function SearchResults (props) {
                                         <div className="col-12 mt-1 px-3 pt-2 pb-5">
                                             {/* Search Input */}
                                             <div className="input-group input-group-lg border-bottom">
-                                                <input className="search-input form-control border-0 text-wrap"
+                                                <input className="search-input bg-transparent form-control border-0 text-wrap"
                                                     name="search_word"
                                                     type="text"
                                                     value={props.search_word}
@@ -142,7 +142,7 @@ export default function SearchResults (props) {
                             <p>Search Results for:</p>
                             {/* Search Input */}
                             <div className="results-page input-group input-group-lg border-bottom">
-                                <input className="search-input form-control border-0 text-wrap text-center"
+                                <input className="search-input bg-transparent form-control border-0 text-wrap text-center"
                                     name="search_word"
                                     type="text"
                                     value={props.search_word}
