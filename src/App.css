@@ -84,7 +84,7 @@ button:hover,
 /* --- Container --- */
 .page-container {
   height: 100vh;
-  background-color: #f6f5f3 !important;
+  background-color: #f5f5f5 !important;
 }
 
 .div-container {
@@ -108,23 +108,23 @@ button:hover,
 
 /* --- Nav Bar --- */
 nav {
-  background-color: #f6f5f3;
+  background-color: #f5f5f5;
   padding-right: 0 !important;
 }
 
 .text.btn-pri {
   font-family: 'Poppins', sans-serif;
   letter-spacing: 0.8px;
-  font-weight: 500;
-  font-size: 13px;
+  font-weight: 400;
+  font-size: 14px;
 }
 
 .text.btn-sec {
   font-family: 'Poppins', sans-serif;
-  color: #333333;
+  /* color: #333333; */
   letter-spacing: 0.8px;
-  font-weight: 500;
-  font-size: 13px;
+  font-weight: 400;
+  font-size: 14px;
 }
 
 .fa-magnifying-glass {
@@ -133,10 +133,6 @@ nav {
 
 .modal-backdrop { 
   z-index: 1029 !important;  
-}
-
-.modal-content {
-  background-color: #f6f5f3 !important;
 }
 
 /* --- Search Bar --- */
@@ -219,14 +215,14 @@ input.search-input {
 }
 
 .banner>div{
-  background-color: #f6f5f3f5;
+  background-color: #fffffff5;
 }
 
 .banner>div>p{
   font-family: 'PT Serif', serif;
   font-size: 26px;
   line-height: 1.2;
-  letter-spacing: 0.8px;
+  letter-spacing: 0.6px;
 }
 
 .banner>div>p>span{
@@ -359,7 +355,7 @@ input.search-input {
 
 /* --- View Page - Comments --- */
 .comments-container {
-  background-color: #f6f5f3 !important;
+  background-color: #f5f5f5 !important;
   padding-left: 20px;
   padding-right: 20px;
   padding-top: 50px;
@@ -430,10 +426,10 @@ input.search-input {
 
 .form .form-header {
   font-family: 'PT Serif', serif;
-  font-size: 34px;
+  font-size: 32px;
   line-height: 1.2;
   font-weight: bold;
-  letter-spacing: 0.6px;
+  letter-spacing: 0.4px;
   overflow: hidden;
   color: #333333;
 }

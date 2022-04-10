@@ -239,7 +239,7 @@ export default function EditProject (props) {
                                         <button type="button"
                                                 className="btn pt-3 px-2"
                                                 onClick={ () => {props.deleteSupply(index)} }
-                                        ><i className="fa-solid fa-circle-minus fs-4"></i></button>
+                                        ><i className="fa-solid fa-circle-minus fs-4 opacity-50"></i></button>
                                     </div>
                                 ))}
                         
@@ -276,7 +276,7 @@ export default function EditProject (props) {
                                     <button type="button"
                                             className="btn pt-2 px-2"
                                             onClick={ () => {props.deleteInstruction(index)} }
-                                    ><i className="fa-solid fa-circle-minus fs-4"></i></button>
+                                    ><i className="fa-solid fa-circle-minus fs-4 opacity-50"></i></button>
                                 </div>
                             ))}
                         </div>
@@ -316,14 +316,14 @@ export default function EditProject (props) {
                         : null}
                         
                         {/* Submit / Cancel*/}
-                        <div className="d-grid gap-2 d-md-flex justify-content-md-end mt-4 mt-md-5 mb-5">
-                            <button type="button" className="col-md-4 col-lg-3 me-md-2 btn btn-dark btn-pri text rounded-0"
+                        <div className="d-grid gap-2 d-md-flex justify-content-md-end mt-4 mt-md-5 mb-4">
+                            <button type="button" className="py-2 col-md-4 col-lg-3 me-md-2 btn btn-dark btn-pri text rounded-0"
                                 onClick={props.updateProject}
                             >UPDATE
                             </button>
                             
                             <button type="button"
-                                className="col-md-4 col-lg-3 btn btn-outline-dark btn-sec text rounded-0"
+                                className="py-2 col-md-4 col-lg-3 btn btn-outline-dark btn-sec text rounded-0"
                                 onClick={props.cancelEdit}
                             >CANCEL
                             </button>

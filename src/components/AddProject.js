@@ -316,7 +316,7 @@ export default function AddProject (props) {
                         : null}
                         
                         {/* Submit / Cancel*/}
-                        <div className="d-grid gap-2 d-md-flex justify-content-md-end mt-4 mt-md-5 mb-5">
+                        <div className="d-grid gap-2 d-md-flex justify-content-md-end mt-4 mt-md-5 mb-4">
                             <button type="button" className="py-2 col-md-4 col-lg-3 me-md-2 btn btn-dark btn-pri text rounded-0"
                                 onClick={props.addProject}
                             >SUBMIT
