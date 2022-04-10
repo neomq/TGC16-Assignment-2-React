@@ -58,7 +58,7 @@ export default function SearchResults (props) {
                                             <div className="row mt-3">
                                                 {/* Filter by Category */}
                                                 <div className="col-md-6 col-lg-3 mt-1">
-                                                    <select className="search-filter form-select border-bottom rounded-0"
+                                                    <select className="search-filter bg-transparent form-select border-bottom rounded-0"
                                                         name="category"
                                                         value={props.category}
                                                         onChange={props.updateFormField}>
@@ -74,7 +74,7 @@ export default function SearchResults (props) {
 
                                                 {/* Filter by Craft */}
                                                 <div className="col-md-6 col-lg-3 mt-1">
-                                                    <select className="search-filter form-select border-bottom rounded-0"
+                                                    <select className="search-filter bg-transparent form-select border-bottom rounded-0"
                                                         name="craft_type"
                                                         value={props.craft_type}
                                                         onChange={props.updateFormField}>
@@ -90,7 +90,7 @@ export default function SearchResults (props) {
 
                                                 {/* Filter by Time */}
                                                 <div className="col-md-6 col-lg-3 mt-1">
-                                                    <select className="search-filter form-select border-bottom rounded-0"
+                                                    <select className="search-filter bg-transparent form-select border-bottom rounded-0"
                                                         name="time_required"
                                                         value={props.time_required}
                                                         onChange={props.updateFormField}>
@@ -103,7 +103,7 @@ export default function SearchResults (props) {
 
                                                 {/* Filter by Difficulty */}
                                                 <div className="col-md-6 col-lg-3 mt-1">
-                                                    <select className="search-filter form-select border-bottom rounded-0"
+                                                    <select className="search-filter bg-transparent form-select border-bottom rounded-0"
                                                         name="difficulty"
                                                         value={props.difficulty}
                                                         onChange={props.updateFormField}>
