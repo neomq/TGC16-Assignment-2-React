@@ -64,9 +64,17 @@ View sample documents here: https://github.com/neomq/TGC16-Assignment-2-React/tr
 
 ### 4. Visual Design
 
+![This is an image](images/Mockup.jpg)
+
+**Style and colour**
 Website is designed with a minimalist approach using monochromatic, neutral colours to allow images of home decorations on the website to stand out and draw users attention and focus to the main contents of the site.
 
 ![This is an image](images/colour.jpg)
+
+**Typography**
+Use of classic and modern typography to bring a unique style to the overall look and feel of the website:
+- serif (PT serif) for titles
+- sans serif (Poppins) for content
 
 ## 3. Features
 
