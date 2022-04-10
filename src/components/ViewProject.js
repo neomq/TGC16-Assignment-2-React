@@ -182,8 +182,8 @@ export default function ViewProject (props) {
                                 <h2 className="view-title overflow-hidden">{p.project_title}</h2>
                                 <p className="view-bodytext">{p.description}</p>
                                 <p className="view-smalltext py-2">By {p.user_name} / {p.date_of_post.toString().split('T')[0]}</p>
-                                <span className="view-smalltext badge rounded-pill bg-light text-dark p-2">{p.time_required} mins</span>
-                                <span className="view-smalltext badge rounded-pill bg-light text-dark p-2 ms-2">{p.difficulty}</span>
+                                <span className="view-smalltext badge text-dark rounded-pill px-3 py-2">{p.time_required} mins</span>
+                                <span className="view-smalltext badge text-dark rounded-pill px-3 py-2 ms-2">{p.difficulty}</span>
                             </div>
                             
                             <hr className="opacity-25"/>

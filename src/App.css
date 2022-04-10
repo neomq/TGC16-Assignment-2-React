@@ -353,6 +353,10 @@ input.search-input {
   font-style: italic;
 }
 
+.badge {
+  border: 1px solid #b9b9b9;
+}
+
 /* --- View Page - Comments --- */
 .comments-container {
   background-color: #f6f5f3 !important;
