@@ -214,7 +214,7 @@ export default function SearchResults (props) {
                         </div>
 
                         {/* Search Button */}
-                        <div className="d-flex flex-column col-md-6 col-lg-3 my-4">
+                        <div className="d-flex flex-column mx-auto col-md-4 mt-4 mb-md-5 mb-4">
                                 <button type="button"
                                     className="text btn-pri btn btn-dark rounded-0 p-2"
                                     onClick={props.getSearch}>
@@ -222,6 +222,10 @@ export default function SearchResults (props) {
                                     <span>SEARCH</span>
                                 </button>
                         </div>
+                        
+                        {/* Display message if search returned 0 results */}
+                        {props.search_error?<p className="mt-5 search-error text-center">{props.search_error}</p>
+                        : null}
                         
                         {/* Cards */}
                         <div className="mt-4 pb-3 row row-cols-2 row-cols-md-3 row-cols-lg-4 g-2">

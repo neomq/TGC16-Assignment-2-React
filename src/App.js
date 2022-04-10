@@ -9,9 +9,10 @@ import AddProject from './components/AddProject.js'
 import EditProject from './components/EditProject.js'
 import ViewProject from './components/ViewProject.js'
 
-// const BASE_URL = "https://home-diy-projects.herokuapp.com";
+const BASE_URL = "https://home-diy-projects.herokuapp.com";
+
 // for testing
-const BASE_URL = "https://3000-neomq-tgc16assignment-x26hedur85s.ws-us39.gitpod.io";
+// const BASE_URL = "https://3000-neomq-tgc16assignment-x26hedur85s.ws-us39.gitpod.io";
 
 export default class App extends React.Component {
 
@@ -129,13 +130,19 @@ export default class App extends React.Component {
       }
     })
     // console.log(search_results.data)
+    
+    let no_results= ""
+    if (search_results.data.length === 0){
+      no_results = "No search results. Please try another search."
+    }
 
     this.setState({
       search_data: search_results.data,
       active: "search results",
       search: false,
       display_project: false,
-      project_data: {}
+      project_data: {},
+      search_error: no_results
     })
   }
 
@@ -786,6 +793,7 @@ export default class App extends React.Component {
                         category_list={this.state.category_list}
                         craft_type_list={this.state.craft_type_list}
                         search_data={this.state.search_data}
+                        search_error={this.state.search_error}
                         viewProject={this.viewProject}
                         getComments={this.getComments}/>
         </React.Fragment>

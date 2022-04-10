@@ -16,8 +16,8 @@ The website's goal is to bring together a community of home owners and interior 
 ### **ER Diagram**
 ![This is an image](images/project2-erd.png)
 
-### **Sample Mongo Document
-
+### **Sample Mongo Document**
+View sample documents here: https://github.com/neomq/TGC16-Assignment-2-React/tree/main/sample%20documents
 
 <br />
 
@@ -71,19 +71,19 @@ Website is designed with a minimalist approach using monochromatic, neutral colo
 ## 3. Features
 
 **Search**
-Users can perform searches on the site via the search bar, and using search filters to help display searches with more relevance.
+- Users can perform searches on the site via the search bar, and using search filters to help display searches with more relevance.
 
 **Create (submit) a post**
-Users can create a post via a form on the "submit decor" page on the website. After submitting the form, users will be redirected to the home page where they can view their created post.
+- Users can create a post via a form on the "submit decor" page on the website. After submitting the form, users will be redirected to the home page where they can view their created post.
 
 **View & Edit a post**
-Clicking on a post will direct the user to the listing page to view more details and information, as well as edit the information on the page by clicking an edit button.
+- Clicking on a post will direct the user to the listing page to view more details and information, as well as edit the information on the page by clicking an edit button.
 
 **Delete post**
-Users can delete a post on the website by going into the page and clicking on delete. A confirmation dialogue box will prompt the user to confirm the deletion before the post is permanently deleted.
+- Users can delete a post on the website by going into the page and clicking on delete. A confirmation dialogue box will prompt the user to confirm the deletion before the post is permanently deleted.
 
 **Comments**
-Users can post, edit and delete comments on each of the listing pages.
+- Users can post, edit and delete comments on each of the listing pages.
 
 **Limitations and future implementations**
 1. A user account / login feature to provide access control to the users - allowing them to only edit and delete their own posts and comments. Currently the site allows everyone to edit and delete data on the site.
@@ -105,6 +105,7 @@ Users can post, edit and delete comments on each of the listing pages.
 - Netlify to deploy React application
 
 **Data Sources**
+<br/>
 All data from this project are sourced from the following sites:
 - DIY rope trinket bowls (https://www.burkatron.com/2019/02/diy-rope-trinket-bowls.html)
 - DIY Fiber Wall Art (http://blueaugustine.com/home-decor-diy-fiber-wall-art/)
@@ -116,6 +117,7 @@ All data from this project are sourced from the following sites:
 ## 5. Testing
 **Perform basic search**
 - From the home page, click on the search icon or the "Search decor" button. A search bar should appear. Enter a search keyword, or select from filters and click on search. Search results should appear on a new page. User is allowed to perform an empty search - in such cases, search will display all data existing in the database.
+- If search does not return any results, a message will be displayed to inform the user to try another search.
 
 **View Home Decor project**
 - clicking on a listing from the home page or from the search results page will bring you to the project listing page to view more information and details.
