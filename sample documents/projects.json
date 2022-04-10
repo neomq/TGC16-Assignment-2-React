@@ -1,0 +1,27 @@
+[
+    {
+        "_id": "",
+        "project_title": "",
+        "user_name": "",
+        "date_of_post": "yyyy-mm-dd",
+        "photo": "",
+        "description": "",
+        "supplies": ["", "", "", "", ""],
+        "craft_type": ["", "", ""],
+        "category": ["", "", ""],
+        "time_required": 20,
+        "difficulty": "easy",
+        "comments": [
+            {
+                "comment_id": "",
+                "comment_name": "",
+                "comment_date": "yyyy-mm-dd",
+                "comment_text": "lorem ipsum"
+            }
+        ],
+        "instructions": {
+            "text": ["some text here", "some text here", "some text here"],
+            "link": "link here"
+        }
+    }
+]

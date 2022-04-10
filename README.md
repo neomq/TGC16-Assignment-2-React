@@ -14,6 +14,9 @@ The aim of users is to discover ideas and inspirations for decorating their home
 The website's goal is to bring together a community of home owners and interior DIY enthusiasts to share and exchnage ideas, skills, and knowledge about decorating the home. Home renovation can be costly, and the website can allowe homeowners to discover cheaper and simpler alternatives to spruce up the look of their home.
 
 ### **ER Diagram**
+![This is an image](images/project2-erd.png)
+
+### **Sample Mongo Document
 
 
 <br />
