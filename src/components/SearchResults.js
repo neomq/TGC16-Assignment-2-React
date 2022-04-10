@@ -207,7 +207,7 @@ export default function SearchResults (props) {
                                     onChange={props.updateFormField}>
                                     <option value="">Difficulty</option>
                                     <option value="easy">Easy</option>
-                                    <option value="normal">Normal</option>
+                                    <option value="intermediate">Intermediate</option>
                                     <option value="challenging">Challenging</option>
                                 </select>
                             </div>

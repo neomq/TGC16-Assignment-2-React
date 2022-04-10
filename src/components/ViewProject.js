@@ -215,7 +215,7 @@ export default function ViewProject (props) {
                                     <hr className="w-25"/>
                                     {p.instructions.link ?
                                             <div className="mt-3 py-3">
-                                                <a href={`${p.instructions.link}`}>
+                                                <a href={`${p.instructions.link}`} target="_blank" rel="noreferrer">
                                                     <span className="view-link">More about {p.project_title}</span>
                                                 </a>
                                             </div>
