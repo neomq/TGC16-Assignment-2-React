@@ -121,6 +121,8 @@ All data from this project are sourced from the following sites:
 - Wood Vase DIY (https://perkinsonparkway.com/2020/10/wood-vase-diy.html)
 - Pull Down Wall Hanging Art (https://www.makinghomebase.com/pull-down-wall-hanging/)
 - Easter Bunny Garland (https://diycandy.com/easter-bunny-garland/)
+- Ring Yarn Art (https://www.delineateyourdwelling.com/ring-yarn-art/)
+- Painted Retro Pillow (https://www.delineateyourdwelling.com/painted-retro-pillow/)
 
 ## 5. Testing
 **Perform basic search**
