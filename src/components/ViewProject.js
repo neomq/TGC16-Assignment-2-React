@@ -44,7 +44,7 @@ export default function ViewProject (props) {
                                     <div className="col-12 mt-1 px-3 pt-2 pb-5">
                                         {/* Search Input */}
                                         <div className="input-group input-group-lg border-bottom">
-                                            <input className="search-input form-control border-0 text-wrap"
+                                            <input className="search-input bg-transparent form-control border-0 text-wrap"
                                                 name="search_word"
                                                 type="text"
                                                 value={props.search_word}
@@ -57,7 +57,7 @@ export default function ViewProject (props) {
                                         <div className="row mt-3">
                                             {/* Filter by Category */}
                                             <div className="col-md-6 col-lg-3 mt-1">
-                                                <select className="search-filter form-select border-bottom rounded-0"
+                                                <select className="search-filter bg-transparent form-select border-bottom rounded-0"
                                                     name="category"
                                                     value={props.category}
                                                     onChange={props.updateFormField}>
@@ -73,7 +73,7 @@ export default function ViewProject (props) {
 
                                             {/* Filter by Craft */}
                                             <div className="col-md-6 col-lg-3 mt-1">
-                                                <select className="search-filter form-select border-bottom rounded-0"
+                                                <select className="search-filter bg-transparent form-select border-bottom rounded-0"
                                                     name="craft_type"
                                                     value={props.craft_type}
                                                     onChange={props.updateFormField}>
@@ -89,7 +89,7 @@ export default function ViewProject (props) {
 
                                             {/* Filter by Time */}
                                             <div className="col-md-6 col-lg-3 mt-1">
-                                                <select className="search-filter form-select border-bottom rounded-0"
+                                                <select className="search-filter bg-transparent form-select border-bottom rounded-0"
                                                     name="time_required"
                                                     value={props.time_required}
                                                     onChange={props.updateFormField}>
@@ -102,7 +102,7 @@ export default function ViewProject (props) {
 
                                             {/* Filter by Difficulty */}
                                             <div className="col-md-6 col-lg-3 mt-1">
-                                                <select className="search-filter form-select border-bottom rounded-0"
+                                                <select className="search-filter bg-transparent form-select border-bottom rounded-0"
                                                     name="difficulty"
                                                     value={props.difficulty}
                                                     onChange={props.updateFormField}>
