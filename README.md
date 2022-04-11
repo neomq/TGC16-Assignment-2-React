@@ -67,11 +67,13 @@ View sample documents here: https://github.com/neomq/TGC16-Assignment-2-React/tr
 ![This is an image](images/Mockup.jpg)
 
 **Style and colour**
+<br/>
 Website is designed with a minimalist approach using monochromatic, neutral colours to allow images of home decorations on the website to stand out and draw users attention and focus to the main contents of the site.
 
 ![This is an image](images/colour.jpg)
 
 **Typography**
+<br/>
 Use of classic and modern typography to bring a unique style to the overall look and feel of the website:
 - serif (PT serif) for titles
 - sans serif (Poppins) for content
@@ -123,6 +125,11 @@ All data from this project are sourced from the following sites:
 - Easter Bunny Garland (https://diycandy.com/easter-bunny-garland/)
 - Ring Yarn Art (https://www.delineateyourdwelling.com/ring-yarn-art/)
 - Painted Retro Pillow (https://www.delineateyourdwelling.com/painted-retro-pillow/)
+- DIY Rattan Style Lamp (https://www.dossierblog.com/diy-rattan-style-lamp-upcycle/)
+- Tree Slice Bedside Table (https://www.schonschoenblog.de/diy/diy-nachttisch-baumscheibe/)
+- DIY Eucalyptus Wreath (https://www.schonschoenblog.de/diy/eukalyptuskranz/)
+- Yoghurt Cup Concrete Flower Pot (https://www.schonschoenblog.de/diy/joghurtbecher-upcycling/)
+
 
 ## 5. Testing
 **Perform basic search**
