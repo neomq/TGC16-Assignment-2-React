@@ -63,9 +63,9 @@ export default function ViewProject (props) {
                                                     onChange={props.updateFormField}>
                                                     <option value="">Category</option>
                                                     {props.category_list.map((c) =>
-                                                        <option key={c.category}
-                                                            value={c.category}
-                                                        >{c.form_display}
+                                                        <option key={c.id}
+                                                            value={c.value}
+                                                        >{c.label}
                                                         </option>
                                                     )}
                                                 </select>

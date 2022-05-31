@@ -29,6 +29,7 @@ export default function AddProject (props) {
                                 onChange={props.updateFormField}
                                 placeholder="e.g. DIY Wood Framed Mirror"
                                 autoComplete="off"
+                                style={{borderColor: props.error_message.title_error ?  "red" : null}}
                             />
                             {props.error_message.title_error ?
                             <p className="error-text my-1">{props.error_message.title_error}</p>
@@ -45,6 +46,7 @@ export default function AddProject (props) {
                                 onChange={props.updateFormField}
                                 placeholder="Paste URL of image"
                                 autoComplete="off"
+                                style={{borderColor: props.error_message.image_error ?  "red" : null}}
                             />
                             {props.error_message.image_error ?
                             <p className="error-text my-1">{props.error_message.image_error}</p>
@@ -59,6 +61,7 @@ export default function AddProject (props) {
                                 value={props.new_description}
                                 onChange={props.updateFormField}
                                 placeholder="e.g. This wood framed mirror is the perfect accessory for any space!"
+                                style={{borderColor: props.error_message.description_error ?  "red" : null}}
                             />
                             {props.error_message.description_error ?
                             <p className="error-text my-1">{props.error_message.description_error}</p>
@@ -75,9 +78,9 @@ export default function AddProject (props) {
                                     onChange={props.updateFormField}>
                                     <option value="">-- Select --</option>
                                     {props.category_list.map((c) =>
-                                        <option key={c.category}
-                                            value={c.category}
-                                        >{c.form_display}
+                                        <option key={c.id}
+                                            value={c.value}
+                                        >{c.label}
                                         </option>
                                     )}
                                 </select>
@@ -87,9 +90,9 @@ export default function AddProject (props) {
                                     onChange={props.updateFormField}>
                                     <option value="">-- Select --</option>
                                     {props.category_list.map((c) =>
-                                        <option key={c.category}
-                                            value={c.category}
-                                        >{c.form_display}
+                                        <option key={c.id}
+                                            value={c.value}
+                                        >{c.label}
                                         </option>
                                     )}
                                 </select>
@@ -99,9 +102,9 @@ export default function AddProject (props) {
                                     onChange={props.updateFormField}>
                                     <option value="">-- Select --</option>
                                     {props.category_list.map((c) =>
-                                        <option key={c.category}
-                                            value={c.category}
-                                        >{c.form_display}
+                                        <option key={c.id}
+                                            value={c.value}
+                                        >{c.label}
                                         </option>
                                     )}
                                 </select>
@@ -115,7 +118,8 @@ export default function AddProject (props) {
                                 <select className="form-select add-form rounded-0 border bg-transparent"
                                     name="new_craft_type_1"
                                     value={props.new_craft_type_1}
-                                    onChange={props.updateFormField}>
+                                    onChange={props.updateFormField}
+                                    style={{borderColor: props.error_message.craft_type_error ?  "red" : null}}>
                                     <option value="">-- Select --</option>
                                     {props.craft_type_list.map((a) =>
                                         <option key={a.craft_type}
@@ -165,6 +169,7 @@ export default function AddProject (props) {
                                     type="text"
                                     placeholder="e.g. 60"
                                     autoComplete="off"
+                                    style={{borderColor: props.error_message.time_error ?  "red" : null}}
                                 />
                                 {props.error_message.time_error ?
                                 <p className="error-text my-1">{props.error_message.time_error}</p>
@@ -218,6 +223,7 @@ export default function AddProject (props) {
                                     onChange={props.updateFormField}
                                     placeholder="e.g. PVA wood glue"
                                     autoComplete="off"
+                                    style={{borderColor: props.error_message.supplies_error ?  "red" : null}}
                                 />
                                 <button type="button"
                                     className="btn pt-2 px-2"
@@ -255,6 +261,7 @@ export default function AddProject (props) {
                                     value={props.new_instructions_text_added}
                                     onChange={props.updateFormField}
                                     placeholder="Write your step here"
+                                    style={{borderColor: props.error_message.instructions_error ?  "red" : null}}
                                 />
                                 <button type="button"
                                     className="btn pt-1 px-2"
@@ -305,6 +312,7 @@ export default function AddProject (props) {
                                 onChange={props.updateFormField}
                                 placeholder="Let us know who you are!"
                                 autoComplete="off"
+                                style={{borderColor: props.error_message.name_error ?  "red" : null}}
                             />
                             {props.error_message.name_error ?
                             <p className="error-text my-1">{props.error_message.name_error}</p>
