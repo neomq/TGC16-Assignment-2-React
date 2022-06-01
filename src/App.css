@@ -77,9 +77,9 @@ button:hover,
   box-shadow: none !important;
 }
 
-/* .form-control {
+.form-control {
   border-color: #b1aeae7e !important;
-} */
+}
 
 /* --- Container --- */
 .page-container {
@@ -177,9 +177,9 @@ input.search-input {
 }
 
 /* remove select border */
-/* .form-select {
+.form-select {
   border: none !important;
-} */
+}
 
 /* style select */
 .search-filter {
